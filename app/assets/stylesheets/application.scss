@@ -13,5 +13,26 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
-
  */
+
+ /*background image for site*/
+
+ @import 'foundation_and_overrides';
+
+.background-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #fff;
+  background-image: url('site_background_image.jpg');
+}
+
+/*Centered content box */
+.content-container {
+  border: $aluminum 1pt solid;
+  background-color: rgba($aluminum,.2);
+  position: relative;
+  margin: 2em 10% 0 15%;
+  padding-left: 1em;
+}
