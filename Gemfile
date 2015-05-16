@@ -24,6 +24,8 @@ gem 'foundation-rails'
 gem 'haml-rails'
 # User authentication
 gem 'devise'
+# Figaro for handling ENV Variables
+gem 'figaro'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
