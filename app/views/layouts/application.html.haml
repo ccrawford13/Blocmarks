@@ -4,35 +4,51 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %title= content_for?(:title) ? yield(:title) : "foundation-rails"
+    %title= content_for?(:title) ? yield(:title) : "Blocmarks"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/modernizr"
     = javascript_include_tag "application", 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body
-    %nav.top-bar{"data-topbar" => "", :role => "navigation"}
-      %ul.title-area
-        %li.name
-          %h1
-            %a{:href => "#"} My Site
-        / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
-        %li.toggle-topbar.menu-icon
-          %a{:href => "#"}
-            %span Menu
-      %section.top-bar-section
-        / Right Nav Section
-        %ul.right
-          %li.active
-            %a{:href => "#"} Right Button Active
-          %li.has-dropdown
-            %a{:href => "#"} Right Button Dropdown
-            %ul.dropdown
-              %li
-                %a{:href => "#"} First link in dropdown
-              %li.active
-                %a{:href => "#"} Active link in dropdown
-        / Left Nav Section
-        %ul.left
-          %li
-            %a{:href => "#"} Left Nav Button
-    = yield
+  %body.background-image
+    .off-canvas-wrap{"data-offcanvas" => ""}
+      .inner-wrap
+        %nav.tab-bar
+          %section.left-small
+            %a.left-off-canvas-toggle.menu-icon{:href => "#"}
+              %span
+          %section.middle.tab-bar-section
+            %h1.title
+          %section.right-small
+            %a.right-off-canvas-toggle.menu-icon{:href => "#"}
+              %span
+        %aside.left-off-canvas-menu
+          %ul.off-canvas-list
+            %li
+              %label Blocmarks
+            %li
+              = link_to "Home", root_path
+            %li
+              = link_to "Contact", welcome_contact_path
+            %li
+              = link_to "About", welcome_about_path
+
+        %aside.right-off-canvas-menu
+          %ul.off-canvas-list
+            %li
+              %label Users
+            %li
+              = link_to "Sign Up", new_user_registration_path, id: "sign_up"
+            %li
+              %a{:href => "#"} ...
+        %section.main-section
+          - if flash[:notice]
+            .alert-box.success.round{"data-alert" => ""}
+              %a.close{:href => "#"} x
+          - elsif flash[:error]
+            .alert-box.alert.round{"data-alert" => ""}
+              %a.close{:href => "#"} x
+          - elsif flash[:alert]
+            .alert-box.alert.round{"data-alert" => ""}
+              %a.close{:href => "#"} x
+          = yield
+    %a.exit-off-canvas
