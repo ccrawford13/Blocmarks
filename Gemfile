@@ -24,8 +24,11 @@ gem 'foundation-rails'
 gem 'haml-rails'
 # User authentication
 gem 'devise'
+# Faker to generate test data
+gem 'faker'
 # Figaro for handling ENV Variables
 gem 'figaro'
+
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
@@ -42,6 +45,9 @@ group :development, :test do
   gem 'capybara'
   # JS Testing W/Capybara
   gem 'capybara-webkit'
+  # Capybara Email testing
+  gem 'capybara-email'
+  gem 'email_spec'
   # Test Factories
   gem 'factory_girl_rails'
   gem 'database_cleaner'

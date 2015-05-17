@@ -34,21 +34,27 @@
 
         %aside.right-off-canvas-menu
           %ul.off-canvas-list
-            %li
-              %label Users
-            %li
-              = link_to "Sign Up", new_user_registration_path, id: "sign_up"
-            %li
-              %a{:href => "#"} ...
+            - if user_signed_in?
+              %li
+                %label= current_user.first_name
+              %li
+                = link_to "My Profile", user_path(current_user), id: "my_profile"
+              %li
+                = link_to "User Settings", edit_user_registration_path, id: "edit_user"
+              %li
+                = link_to "Sign Out", destroy_user_session_path, id: "sign_out", method: :delete
+            - else
+              %li
+                %label User Information
+              %li
+                = link_to "Sign Up", new_user_registration_path, id: "sign_up"
+              %li
+                = link_to "Sign In", new_user_session_path, id: "sign_in"
         %section.main-section
-          - if flash[:notice]
-            .alert-box.success.round{"data-alert" => ""}
-              %a.close{:href => "#"} x
-          - elsif flash[:error]
-            .alert-box.alert.round{"data-alert" => ""}
-              %a.close{:href => "#"} x
-          - elsif flash[:alert]
-            .alert-box.alert.round{"data-alert" => ""}
-              %a.close{:href => "#"} x
+          - flash.each do |name, msg|
+            - if msg.is_a?(String)
+              %div{:class => "alert-box round #{name == :notice ? "alert" : "success"}", "data-alert" => ""}
+                = content_tag :div, msg
+                %a.close{:href => ""} x
           = yield
     %a.exit-off-canvas

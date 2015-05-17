@@ -31,8 +31,8 @@
 /*Centered content box */
 .content-container {
   border: $aluminum 1pt solid;
-  background-color: rgba($aluminum,.2);
+  background-color: rgba($ghost,.6);
   position: relative;
-  margin: 2em 10% 0 15%;
-  padding-left: 1em;
+  margin: 2% 10% 0 10%;
+  padding: 1em;
 }
