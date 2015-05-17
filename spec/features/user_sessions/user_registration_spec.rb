@@ -1,61 +1,77 @@
 require 'rails_helper'
 
 describe "User registration" do
-  Capybara.javascript_driver = :webkit
-
-  let(:user_email) { 'test_user@example.com'}
-  let(:user_password) {'password'}
-  let(:user_password_confirmation) {'password'}
-
 
   context "successful sign up" do
-    
+
     before do
       visit root_path
-      click_link "sign_up"
-      fill_in "Email", with: user_email
-      fill_in "Password", with: user_password
-      fill_in "Password confirmation", with: user_password_confirmation
-      click_button "sign_up"
+      user_sign_up
     end
+    
+    let(:user) { build(:user) }
 
-    it "displays message about confirmation email" do
+    it "flash message for confirmation link" do  
       expect( page ).to have_content "A message with a confirmation link has been sent"
     end
   end
 
-  describe "confirmation email" do
-    # include EmailSpec::Helpers
-    # include EmailSpec::Matchers
-    # before do
-    #   visit email_trigger_path
-    # end
-    # open most recent email sent to user_email
-    subject { open_email(user_email) }
+  context "unsuccessful sign up" do
+    before do
+      visit root_path
+      click_link "sign_up"
+    end
 
-    # Verify email details
-    it { is_expected.to deliver_to(user_email) }
-    it { is_expected.to have_body_text(/You can confirm your account/) }
-    it { is_expected.to have_body_text(/users\/confirmation\?confirmation/) }
-    it { is_expected.to have_subject(/Confirmation instructions/) }
+    it "requires first name" do
+      fill_in "Last name", with: "Smith"
+      fill_in "Email", with: "john@example.com"
+      fill_in "Password", with: "helloworld"
+      fill_in "Password confirmation", with: "helloworld"
+      click_button "sign_up"
+      expect( page ).to have_content "First name can't be blank"
+    end
 
-    context "when clicking confirmation link in email" do
-      before do
-        visit email_trigger_path
-        open_email(user_email)
-        current_email.click_link 'Confirm my account'
-      end
+    it "requires last name" do
+      fill_in "First name", with: "John"
+      fill_in "Email", with: "john@example.com"
+      fill_in "Password", with: "helloworld"
+      fill_in "Password confirmation", with: "helloworld"
+      click_button "sign_up"
+      expect( page ).to have_content "Last name can't be blank"
+    end
 
-      it "shows confirmation message" do
-        expect( page ).to have_content "Your account was successfully confirmed"
-      end
+    it "requires valid email" do
+      fill_in "Email", with: "john@example"
+      fill_in "Password", with: "helloworld"
+      fill_in "Password confirmation", with: "helloworld"
+      click_button "sign_up"
+      expect( page ).to have_content "Email is invalid"
+    end
 
-      it "confirms user" do
-        user = User.find_for_authentication(email: user_email)
-        expect( user ).to be_confirmed
-      end
+    it "requires valid password" do
+      fill_in "Email", with: "john@example.com"
+      fill_in "Password", with: "world"
+      fill_in "Password confirmation", with: "world"
+      click_button "sign_up"
+      expect( page ).to have_content "Password is too short"
+    end
+
+    it "requires matching passwords" do
+      fill_in "Email", with: "john@example.com"
+      fill_in "Password", with: "hellowor"
+      fill_in "Password confirmation", with: "helloworld"
+      click_button "sign_up"
+      expect( page ).to have_content "Password confirmation doesn't match Password"
     end
   end
 end
 
-
+def user_sign_up
+  click_link "sign_up"
+  fill_in "First name", with: user.first_name
+  fill_in "Last name", with: user.last_name
+  fill_in "Email", with: user.email
+  fill_in "Password", with: user.password
+  fill_in "Password confirmation", with: user.password
+  click_button "sign_up"
+end

@@ -47,6 +47,7 @@ group :development, :test do
   gem 'capybara-webkit'
   # Capybara Email testing
   gem 'capybara-email'
+  gem 'email_spec'
   # Test Factories
   gem 'factory_girl_rails'
   gem 'database_cleaner'
