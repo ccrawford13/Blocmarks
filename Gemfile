@@ -28,6 +28,7 @@ gem 'devise'
 gem 'faker'
 # Figaro for handling ENV Variables
 gem 'figaro'
+gem 'newrelic_rpm'
 
 
 group :development, :test do
