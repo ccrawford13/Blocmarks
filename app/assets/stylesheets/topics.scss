@@ -1,3 +1,38 @@
 // Place all the styles related to the Topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'foundation_and_overrides';
+
+%container {
+  @extend .large-12;
+  @extend .large-centered;
+  @extend .columns;
+}
+
+.ind-topic-container{
+  @extend %container;
+  min-width: 85%;
+  padding: 1em 0 1em 0;
+  text-align: center;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+
+    h3 {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    small {
+      margin-top: 0;
+      padding-top: 0;
+    }
+}
+
+.new-topic-form {
+  @extend %container;
+  width: 65%;
+}
+
+.centered-submit-button {
+  @extend %container;
+  text-align: center;
+}

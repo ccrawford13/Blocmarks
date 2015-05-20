@@ -1,0 +1,3 @@
+= div_for(topic, class: 'ind-topic-container', id: "topic-#{topic.id}") do
+  %h3= "# #{topic.title.titleize}"
+  %small= topic.created_at.to_time

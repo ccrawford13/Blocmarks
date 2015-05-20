@@ -1,0 +1,6 @@
+<% if @topic.valid? %>
+  $('.topics-container').prepend("<%= escape_javascript(render(@topic)) %>");
+   $('.new-form').html("<%= escape_javascript(render partial: 'form', locals: { user: @user, topics: @topics }) %>");
+ <% else %>
+   $('.new-topic-form').prepend("<div class='alert-box round alert'> <%= flash[:error] = "Error Creating Topic. Please Try Again" %> </div");
+ <% end %>
