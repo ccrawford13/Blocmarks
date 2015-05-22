@@ -21,22 +21,16 @@ describe "Creation of topics", js: true do
       click_button "create_topic"
     end
 
-    it "displays newly created topic", js: true do
+    it "displays newly created topic" do
       expect( page ).to have_content "New Topic"
     end
   end
 
   context "with invalid title" do
 
-    it "displays error with no title", js: true do
+    it "displays error message" do
       click_button "create_topic"
-      expect( page ).to have_content "Error Creating Topic. Please Try Again"
-    end
-
-    it "displays error with too short title", js: true do
-      fill_in "title", with: "New"
-      click_button "create_topic"
-      expect( page ).to have_content "Error Creating Topic. Please Try Again"
+      expect( page ).to have_content "Error Creating Topic - Topic must be 5 or more Characters"
     end
   end
 end

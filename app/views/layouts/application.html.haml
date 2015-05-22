@@ -52,9 +52,10 @@
                 = link_to "Sign In", new_user_session_path, id: "sign_in"
         %section.main-section
           - flash.each do |name, msg|
-            - if msg.is_a?(String)
-              %div{:class => "alert-box round #{name == :notice ? "alert" : "success"}", "data-alert" => ""}
-                = content_tag :div, msg
-                %a.close{:href => ""} x
+            - unless controller_name == 'topics'
+              - if msg.is_a?(String)
+                %div{:class => "alert-box round #{name == :notice ? "alert" : "success"}", "data-alert" => ""}
+                  = content_tag :div, msg
+                  %a.close{:href => ""} x
           = yield
     %a.exit-off-canvas

@@ -1,0 +1,5 @@
+= form_for [ topic ], remote: true do |f|
+  .new-topic-form
+    = f.text_field :title, id: "title", class: 'large-8', placeholder: "New Topic"
+    .centered-submit-button
+      %button.small.button.round{:type => "submit", id: "save_changes"} Save Changes

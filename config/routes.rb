@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users, only: [:show]
-  resources :topics, only: [:index, :create]
+  resources :topics, only: [:index, :create, :show, :edit, :update]
 
   post :incoming, to: "incoming#create"
   # Welcome Controller

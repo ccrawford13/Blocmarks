@@ -1,3 +1,9 @@
 = div_for(topic, class: 'ind-topic-container', id: "topic-#{topic.id}") do
-  %h3= "# #{topic.title.titleize}"
-  %small= topic.created_at.to_time
+  -if controller_name == 'topics'
+    - if action_name == 'index' || action_name == 'create'
+      %h3= link_to "# #{topic.title.titleize}", topic_path(topic), id: "topic_link"
+      %small= topic.created_at.to_time
+    - elsif action_name == 'show' || action_name == 'update'
+      %h3= link_to "# #{topic.title.titleize}", edit_topic_path, id: "edit_topic", remote: true
+      .edit-form{style: 'display:none'}
+      %small= topic.created_at.to_time
