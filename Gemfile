@@ -30,7 +30,6 @@ gem 'faker'
 gem 'figaro'
 gem 'newrelic_rpm'
 
-
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
@@ -49,6 +48,8 @@ group :development, :test do
   # Capybara Email testing
   gem 'capybara-email'
   gem 'email_spec'
+  # Shoulda Matchers
+  gem 'shoulda-matchers', require: false
   # Test Factories
   gem 'factory_girl_rails'
   gem 'database_cleaner'

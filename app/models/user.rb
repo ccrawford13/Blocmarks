@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :topics
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :email, presence: true
-  validates :password, presence: true
-  validates :password_confirmation, presence: true
+  validates_presence_of :first_name
+  validates_presence_of :last_name
+  validates_presence_of :email
+  validates_presence_of :password
+  validates_presence_of :password_confirmation
 end

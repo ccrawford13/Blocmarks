@@ -1,6 +1,6 @@
 class Topic < ActiveRecord::Base
   belongs_to :user
   has_many :bookmarks
-  validates :user, presence: true
-  validates :title, length: { minimum: 5 }, presence: true
+  validates_presence_of :user
+  validates_length_of :title, minimum: 5
 end
