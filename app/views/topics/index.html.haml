@@ -1,8 +1,8 @@
 .content-container
   - if current_user
-    .new-form
-      .row
+    .row.topic-form
+      .large-12.columns.large-centered
         = render partial: 'form', locals: { user: @user, topics: @topics }
-  .topics-container
-    .row
-      = render @topics
+  .row
+    .large-10.columns#topics
+      = render @topics, locals: { user: @user, topics: @topics }

@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   
-  before_action :user_present?, only:[:index, :create, :update, :edit]
-  before_action :find_topic,  only:[:show, :edit, :update]
+  before_action :user_present?, only:[:index, :create, :update, :edit, :destroy]
+  before_action :find_topic,  only:[:show, :edit, :update, :destroy]
 
   def index
     @topics = Topic.all
@@ -13,6 +13,7 @@ class TopicsController < ApplicationController
 
   def create
     @topic = @user.topics.build( topic_params )
+    authorize @topic
     @topic.save
 
     respond_to do |format|
@@ -25,9 +26,11 @@ class TopicsController < ApplicationController
   end
 
   def edit
+    authorize @topic
   end
 
   def update
+    authorize @topic
     @topic.update_attributes( topic_params )
 
     respond_to do |format|
@@ -36,11 +39,16 @@ class TopicsController < ApplicationController
     end
   end
 
+  def destroy
+    authorize @topic
+    @topic.destroy
+  end
+
   private
 
   def user_present?
     if current_user
-      @user = current_user
+      @user = current_user 
     end
   end
 

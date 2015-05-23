@@ -29,6 +29,8 @@ gem 'faker'
 # Figaro for handling ENV Variables
 gem 'figaro'
 gem 'newrelic_rpm'
+# User Authorizations
+gem 'pundit'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

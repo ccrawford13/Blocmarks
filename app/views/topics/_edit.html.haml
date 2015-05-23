@@ -1,5 +1,8 @@
 = form_for [ topic ], remote: true do |f|
-  .new-topic-form
-    = f.text_field :title, id: "title", class: 'large-8', placeholder: "New Topic"
-    .centered-submit-button
-      %button.small.button.round{:type => "submit", id: "save_changes"} Save Changes
+  .row
+    .large-7.columns
+      .row.collapse
+        .small-10.columns
+          = f.text_field :title, id: "title", placeholder: "New Topic"
+        .small-2.columns
+          %button.postfix{type: "submit", id: "save_changes"} Save
