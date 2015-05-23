@@ -3,20 +3,34 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'foundation_and_overrides';
 
-%container {
-  @extend .large-12;
+%large-container {
+  @extend .large-5;
   @extend .large-centered;
-  @extend .columns;
 }
 
-.ind-topic-container{
-  @extend %container;
-  min-width: 85%;
-  padding: 1em 0 1em 0;
-  text-align: center;
-  text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+.inner-container {
+  @extend .large-10;
+  @extend .large-centered;
+  @extend .columns;
+  margin: 1em;
+}
 
-    h3 {
+.topic {
+  margin: 0 5% 0 5%;
+}
+
+.topic-container-inner {
+  @extend .large-7;
+  @extend .columns;
+  margin: 0 3em;
+  padding: 0 2em;
+}
+
+.topic-title {
+  @extend .large-10;
+  @extend .columns;
+
+  h3 {
       padding-bottom: 0;
       margin-bottom: 0;
     }
@@ -27,12 +41,21 @@
     }
 }
 
-.new-topic-form {
-  @extend %container;
-  width: 65%;
+.delete-link {
+  @extend .small-2;
+  @extend .columns;
+  padding: .5em 0; 
+
+  .fi-pencil , .fi-trash{
+    color: $aluminum;
+    font-size: 30px;
+    padding: 0 .25em;
+  }
 }
 
-.centered-submit-button {
-  @extend %container;
+#save_changes, #create_topic {
   text-align: center;
+  padding: 0;
 }
+
+
