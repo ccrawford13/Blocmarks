@@ -10,27 +10,47 @@ describe "Creation of topics", js: true do
     visit topics_path
   end
 
-  it "displays form to create topic" do
-    expect( page ).to have_selector(:link_or_button, "Create Topic")
-  end
+  context "when user is present" do
 
-  context "with valid title" do
+    it "displays form to create topic" do
+      expect( page ).to have_button "create_topic"
+    end
+
+    context "with valid title" do
     
+      before do
+        fill_in "title", with: "New Topic"
+        click_button "create_topic"
+      end
+
+      it "displays newly created topic" do
+        expect( page ).to have_content "New Topic"
+      end
+    end
+
+    context "with invalid title" do
+
+      it "displays error message" do
+        click_button "create_topic"
+        expect( page ).to have_content "Error Creating Topic - Topic must be 5 or more Characters"
+      end
+    end
+  end
+
+  context "with no user present" do
+
+    # Sign out User and view topics#index with no current_user
     before do
-      fill_in "title", with: "New Topic"
-      click_button "create_topic"
+      sign_out_user
     end
 
-    it "displays newly created topic" do
-      expect( page ).to have_content "New Topic"
-    end
-  end
-
-  context "with invalid title" do
-
-    it "displays error message" do
-      click_button "create_topic"
-      expect( page ).to have_content "Error Creating Topic - Topic must be 5 or more Characters"
+    it "does not display form to create topic" do
+      expect( page ).not_to have_button "create_topic"
     end
   end
+end
+
+def sign_out_user
+  click_link "sign_out"
+  visit topics_path
 end
