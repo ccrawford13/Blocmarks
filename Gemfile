@@ -31,6 +31,8 @@ gem 'figaro'
 gem 'newrelic_rpm'
 # User Authorizations
 gem 'pundit'
+# RuboCop - Check code against Ruby Style Guide
+gem 'rubocop', require: false
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
@@ -67,4 +69,3 @@ group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
-

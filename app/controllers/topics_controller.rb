@@ -12,13 +12,13 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = @user.topics.build( topic_params )
+    @topic = @user.topics.build(topic_params)
     authorize @topic
     @topic.save
 
     respond_to do |format|
       format.html
-      format.js 
+      format.js
     end
   end
 
@@ -31,11 +31,11 @@ class TopicsController < ApplicationController
 
   def update
     authorize @topic
-    @topic.update_attributes( topic_params )
+    @topic.update_attributes(topic_params)
 
     respond_to do |format|
       format.html
-      format.js 
+      format.js
     end
   end
 
@@ -48,7 +48,7 @@ class TopicsController < ApplicationController
 
   def user_present?
     if current_user
-      @user = current_user 
+      @user = current_user
     end
   end
 
