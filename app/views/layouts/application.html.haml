@@ -10,52 +10,41 @@
     = javascript_include_tag "application", 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body.background-image
-    .off-canvas-wrap{"data-offcanvas" => ""}
-      .inner-wrap
-        %nav.tab-bar
-          %section.left-small
-            %a.left-off-canvas-toggle.menu-icon{:href => "#"}
-              %span
-          %section.middle.tab-bar-section
-            %h1.title
-          %section.right-small
-            %a.right-off-canvas-toggle.menu-icon{:href => "#"}
-              %span
-        %aside.left-off-canvas-menu
-          %ul.off-canvas-list
+    %nav.top-bar{"data-topbar" => "", :role => "navigation"}
+      %ul.title-area
+        %li.name
+          %h1
+            = link_to "Blocmarks", root_path, id: "title_link"
+        / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+        %li.toggle-topbar.menu-icon
+          %a{:href => "#"}
+            %span MENUE??
+      %section.top-bar-section
+        / Right Nav Section
+        %ul.right
+          - if user_signed_in?
+            %li.has-dropdown
+              = link_to current_user.first_name.titleize, "#" 
+              %ul.dropdown
+                %li
+                  = link_to "My Profile", user_path(current_user), id: "my_profile"
+                %li
+                  = link_to "User Settings", edit_user_registration_path, id: "edit_user"
+                %li
+                  = link_to "Sign Out", destroy_user_session_path, id: "sign_out", method: :delete
+          - else
             %li
-              %label Blocmarks
+              = link_to "Sign Up", new_user_registration_path, id: "sign_up"
             %li
-              = link_to "Home", root_path
-            %li
-              = link_to "Contact", welcome_contact_path
-            %li
-              = link_to "About", welcome_about_path
-
-        %aside.right-off-canvas-menu
-          %ul.off-canvas-list
-            - if user_signed_in?
-              %li
-                %label= current_user.first_name
-              %li
-                = link_to "My Profile", user_path(current_user), id: "my_profile"
-              %li
-                = link_to "User Settings", edit_user_registration_path, id: "edit_user"
-              %li
-                = link_to "Sign Out", destroy_user_session_path, id: "sign_out", method: :delete
-            - else
-              %li
-                %label User Information
-              %li
-                = link_to "Sign Up", new_user_registration_path, id: "sign_up"
-              %li
-                = link_to "Sign In", new_user_session_path, id: "sign_in"
-        %section.main-section
-          - flash.each do |name, msg|
-            - unless controller_name == 'topics'
-              - if msg.is_a?(String)
-                %div{:class => "alert-box round #{name == :notice ? "alert" : "success"}", "data-alert" => ""}
-                  = content_tag :div, msg
-                  %a.close{:href => ""} x
-          = yield
-    %a.exit-off-canvas
+              = link_to "Sign In", new_user_session_path, id: "sign_in"
+        / Left Nav Section
+        %ul.left
+          %li
+            = link_to "Browse Topics", topics_path, id: "browse_topics"    
+    - flash.each do |name, msg|
+      - unless controller_name == 'topics'
+        - if msg.is_a?(String)
+          %div{:class => "alert-box round #{name == :notice ? "alert" : "success"}", "data-alert" => ""}
+            = content_tag :div, msg
+            %a.close{:href => ""} x
+    = yield
