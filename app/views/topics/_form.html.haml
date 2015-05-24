@@ -1,0 +1,8 @@
+= form_for [ user.topics.build ], remote: true do |f|
+  .row
+    .large-7.columns
+      .row.collapse
+        .small-10.columns
+          = f.text_field :title, id: "title", placeholder: "New Topic", autofocus: true
+        .small-2.columns
+          %button.postfix{:type => "submit", :id => "create_topic"} Create

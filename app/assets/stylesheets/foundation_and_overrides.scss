@@ -1500,6 +1500,8 @@ $off-canvas-link-color: rgba($black, .7);
 // Background color for the top bar
 // $topbar-bg-color: $oil;
 // $topbar-bg: $topbar-bg-color;
+$topbar-bg-color: transparent;
+$topbar-bg: transparent;
 
 // Height and margin
 // $topbar-height: rem-calc(45);
@@ -1518,8 +1520,8 @@ $off-canvas-link-color: rgba($black, .7);
 // $topbar-link-font-size: rem-calc(13);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 // $topbar-link-bg: $topbar-bg;
-// $topbar-link-bg-hover: $jet;
-// $topbar-link-bg-color-hover: $charcoal;
+$topbar-link-bg-hover: $steel;
+$topbar-link-bg-color-hover: $charcoal;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
 // $topbar-link-font-family: $body-font-family;
@@ -1536,6 +1538,22 @@ $off-canvas-link-color: rgba($black, .7);
 // $topbar-dropdown-link-color-hover: $topbar-link-color-hover;
 // $topbar-dropdown-link-bg: $oil;
 // $topbar-dropdown-link-bg-hover: $jet;
+// $topbar-dropdown-link-weight: $font-weight-normal;
+// $topbar-dropdown-toggle-size: 5px;
+// $topbar-dropdown-toggle-color: $white;
+// $topbar-dropdown-toggle-alpha: .4;
+
+// $topbar-dropdown-label-color: $monsoon;
+// $topbar-dropdown-label-text-transform: uppercase;
+// $topbar-dropdown-label-font-weight: $font-weight-bold;
+// $topbar-dropdown-label-font-size: rem-calc(10);
+// $topbar-dropdown-label-bg: $oil;
+
+$topbar-dropdown-bg: transparent;
+// $topbar-dropdown-link-color: $white;
+// $topbar-dropdown-link-color-hover: $topbar-link-color-hover;
+$topbar-dropdown-link-bg: $steel;
+$topbar-dropdown-link-bg-hover: $steel;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: $white;

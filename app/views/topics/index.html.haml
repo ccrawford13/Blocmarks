@@ -1,3 +1,8 @@
-%h1 Topics#index
-%p Find me in app/views/topics/index.html.haml
-= @topics
+.content-container
+  - if current_user
+    .row.topic-form
+      .large-12.columns.large-centered
+        = render partial: 'form', locals: { user: @user, topics: @topics }
+  .row
+    .large-10.columns#topics
+      = render @topics, locals: { user: @user, topics: @topics }

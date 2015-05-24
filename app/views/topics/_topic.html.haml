@@ -1,0 +1,15 @@
+= div_for(topic, class: 'row', id: "topic-#{topic.id}") do
+  .large-8.columns
+    - if controller_name == 'topics' && (action_name == 'show' || action_name == 'update')
+      - if policy(@topic).update?
+        .delete-link
+          = link_to "", edit_topic_path, id: "edit_topic", class: "fi-pencil", remote: true
+          = link_to "", [topic], id: "delete_topic", class: "fi-trash", method: :delete, remote: true
+      .topic-title
+        %h3= "# #{topic.title.titleize}"
+        %small= topic.created_at.to_time
+      .edit-form{style: 'display:none'}
+    - else
+      .topic-title
+        %h3= link_to "# #{topic.title.titleize}", topic_path(topic), id: "topic_link"
+        %small= topic.created_at.to_time
