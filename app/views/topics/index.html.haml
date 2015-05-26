@@ -2,7 +2,7 @@
   - if current_user
     .row.topic-form
       .large-12.columns.large-centered
-        = render partial: 'form', locals: { user: @user, topics: @topics }
+        = render partial: 'form', locals: { user: @user, topic: @topic }
   .row
     .large-10.columns#topics
-      = render @topics, locals: { user: @user, topics: @topics }
+      = render @topics

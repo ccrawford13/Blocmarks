@@ -9,10 +9,10 @@
 }
 
 .inner-container {
-  @extend .large-10;
+  @extend .large-12;
   @extend .large-centered;
   @extend .columns;
-  margin: 1em;
+  padding: 1em;
 }
 
 .topic {
@@ -24,6 +24,10 @@
   @extend .columns;
   margin: 0 3em;
   padding: 0 2em;
+}
+
+.topic-conainer {
+  text-align: center;
 }
 
 .topic-title {
@@ -53,9 +57,12 @@
   }
 }
 
-#save_changes, #create_topic {
+#save_changes, #create_topic, #create_bookmark {
   text-align: center;
-  padding: 0;
+  vertical-align: middle;
 }
 
-
+.ind-bookmark {
+  text-align: center;
+  padding: .5em;
+}

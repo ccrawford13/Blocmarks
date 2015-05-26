@@ -1,10 +1,11 @@
 class TopicsController < ApplicationController
   
-  before_action :user_present?, only:[:index, :create, :update, :edit, :destroy]
-  before_action :find_topic,  only:[:show, :edit, :update, :destroy]
+  before_action :user_present?, except:[:new]
+  before_action :find_topic,  except:[:index, :new, :create]
 
   def index
     @topics = Topic.all
+    @topic = Topic.new
   end
 
   def new
@@ -23,6 +24,8 @@ class TopicsController < ApplicationController
   end
 
   def show
+    @bookmark = Bookmark.new
+    @bookmarks = @topic.bookmarks
   end
 
   def edit

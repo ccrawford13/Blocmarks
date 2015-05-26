@@ -1,5 +1,5 @@
 <% if @topic.valid? %>
-  $('.row').html("<%= escape_javascript(render @topic) %>");
+  $('#topic-container').html("<%= escape_javascript(render @topic) %>");
   $('.edit-form').slideUp(350);
 <% else %>
   $('.topics-container').prepend("<div class='alert-box round alert'> <%= flash[:error] = "Error Updating Topic - Topic must be 5 or more characters" %> </div>");

@@ -1,0 +1,2 @@
+= content_tag(:li, bookmark, class: 'ind-bookmark', id: "bookmark-#{bookmark.id}") do
+  %h4= link_to "#{bookmark.description}", "#{bookmark.url}", target: "_blank"

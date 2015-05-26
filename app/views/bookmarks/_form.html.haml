@@ -1,0 +1,10 @@
+= form_for [topic, bookmark], remote: true do |f|
+  .row
+    .large-7.columns
+      .row.collapse
+        .small-10.columns
+          = f.text_field :description, id: "description", placeholder: "Awesome Search Engine", autfocus: true
+        .small-10.columns
+          = f.text_field :url, id: "url", placeholder: "http://www.google.com", autofocus: true
+        .small-2.columns
+          %button.postfix{:type => "submit", :id => "create_bookmark"} Create
