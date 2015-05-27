@@ -8,7 +8,7 @@
           - if policy(@topic).update?
             .delete-link
               = link_to "", edit_topic_path, id: "edit_topic", class: "fi-pencil", remote: true
-              = link_to "", [@topic], id: "delete_topic", class: "fi-trash", method: :delete
+              = link_to "", [@topic], id: "delete_topic", class: "fi-trash", method: :delete, remote: true
           .topic-title
             %h3= "# #{@topic.title.titleize}"
             %small= @topic.created_at.to_time

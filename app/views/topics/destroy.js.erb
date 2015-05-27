@@ -1,0 +1,7 @@
+<% if @topic.destroyed? %>
+  $('#topic_' +<%= @topic.id %>).fadeOut(325);
+  document.location.href = '/topics';
+<% else %>
+  $('.topic-form').prepend("<div class='alert-box round alert'> <%= flash[:error] = "Error Destroying Topic" %> </div>");
+   $('.alert-box').fadeOut(6000);
+<% end %>

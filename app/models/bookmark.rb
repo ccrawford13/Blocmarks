@@ -2,9 +2,6 @@ class Bookmark < ActiveRecord::Base
   belongs_to :user, dependent: :destroy
   belongs_to :topic, dependent: :destroy
   
-  # Bookmark Doesn't Contain user_id - However User is able to call
-  # user.bookmarks?
-  
   # validates_presence_of :user
   validates_presence_of :topic
   validates_presence_of :description
