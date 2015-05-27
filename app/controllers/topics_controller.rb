@@ -30,6 +30,7 @@ class TopicsController < ApplicationController
 
   def edit
     authorize @topic
+    @topic.save
   end
 
   def update
@@ -44,7 +45,9 @@ class TopicsController < ApplicationController
 
   def destroy
     authorize @topic
-    @topic.destroy
+      if @topic.destroy
+        redirect_to :topics
+      end
   end
 
   private
