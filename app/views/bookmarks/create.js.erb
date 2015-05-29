@@ -1,7 +1,7 @@
 <% if @bookmark.valid? %>
-   $('#bookmark-list').prepend("<%= escape_javascript(render @bookmark) %>");
-   $('.new_bookmark').html("<%= escape_javascript(render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: Bookmark.new }) %>");
- <% else %>
-   $('.topics-container').prepend("<div class='alert-box round alert'> <%= flash[:error] = "Error Creating Topic - Topic must be within 5-20 Characters" %> </div>");
-   $('.alert-box').fadeOut(6000);
- <% end %>
+  $('#bookmark-list').prepend("<%= escape_javascript(render 'bookmarks/bookmarks_with_links', bookmark: @bookmark) %>");
+  $('.new_bookmark').html("<%= escape_javascript(render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: Bookmark.new }) %>");
+<% else %>
+  $('.topics-container').prepend("<div class='alert-box round alert'> <%= flash[:error] %> </div>");
+  $('.alert-box').fadeOut(6000);
+<% end %>
