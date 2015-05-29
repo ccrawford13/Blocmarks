@@ -14,7 +14,9 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = @topic.bookmarks.build(bookmark_params)
     authorize @bookmark
-    @bookmark.save
+    if !@bookmark.save
+      flash.now[:error] = "Error creating Bookmark. #{@bookmark.errors.full_messages}"
+    end
 
     respond_to do |format|
       format.html
@@ -22,13 +24,24 @@ class BookmarksController < ApplicationController
     end
   end
 
-  def show
+  def edit
+    authorize @bookmark
   end
 
-  def edit
+  def update
+    @bookmark.find(params[:id])
+    authorize @bookmark
+    if !@bookmark.update_attributes(bookmark_params)
+      flash.now[:error] = "Error updating Bookmark. #{@bookmark.errors.full_messages}"
+    end
   end
 
   def destroy
+    authorize @bookmark
+    @bookmark = Bookmark.find(params[:id])
+    if !@bookmark.destroy
+      flash.now[:error] = "Error deleting Bookmark. #{@bookmark.errors.full_messages}"
+    end
   end
 
   private

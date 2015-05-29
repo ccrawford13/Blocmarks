@@ -15,11 +15,13 @@ class TopicsController < ApplicationController
   def create
     @topic = @user.topics.build(topic_params)
     authorize @topic
-    @topic.save
+    if !@topic.save
+      flash.now[:error] = "Error creating Topic. #{@topic.errors.full_messages}"
+    end
 
     respond_to do |format|
       format.html
-      format.js
+      format.js 
     end
   end
 
@@ -34,7 +36,9 @@ class TopicsController < ApplicationController
 
   def update
     authorize @topic
-    @topic.update_attributes(topic_params)
+    if !@topic.update_attributes(topic_params)
+      flash.now[:error] = "Error updating Topic. #{@topic.errors.full_messages}"
+    end
 
     respond_to do |format|
       format.html
@@ -44,7 +48,9 @@ class TopicsController < ApplicationController
 
   def destroy
     authorize @topic
-    @topic.destroy
+    if !@topic.destroy
+      flash.now[:error] = "Error deleting Topic. #{@topic.errors.full_messages}"
+    end
   end
 
   private
