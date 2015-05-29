@@ -56,14 +56,28 @@
   @extend .columns;
   padding: .5em 0; 
 
-  .fi-pencil , .fi-trash{
+  .fi-pencil , .fi-trash {
     color: $aluminum;
     font-size: 30px;
     padding: 0 .25em;
   }
 }
 
+.bookmark-controls {
+  @extend .small-2;
+  @extend .columns;
+  padding: 0;
+
+  .fi-pencil, .fi-trash {
+    display: inline-block;
+    color: $aluminum;
+    font-size: 18px;
+    padding: 0.25em;
+  }
+}
+
 #save_changes, #create_topic, #create_bookmark {
+  padding: 0;
   text-align: center;
   vertical-align: middle;
 }

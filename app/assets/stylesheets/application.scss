@@ -15,9 +15,9 @@
  *= require foundation_and_overrides
  */
 
- /*background image for site*/
-
  @import 'foundation_and_overrides';
+
+ // background image for site
 
 .background-image {
   background-size: cover;
@@ -28,7 +28,8 @@
   background-image: url('site_background_image.jpg');
 }
 
-/*Centered content box */
+// Centered content box 
+
 .content-container {
   border: $aluminum 1pt solid;
   background-color: rgba($ghost,.6);

@@ -1,0 +1,10 @@
+.content-container
+  .inner-container
+    .bookmarks-container
+      - if policy(@bookmark).create?
+        = render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: @bookmark }
+    .row.topics-container
+      = render partial: 'topic_with_links'
+      .bookmark-container
+        %ul.small-block-grid-2.medium-block-grid-3#bookmark-list
+          = render partial: 'bookmarks/bookmarks_with_links', collection: @bookmarks, as: :bookmark
