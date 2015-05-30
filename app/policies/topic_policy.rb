@@ -8,11 +8,11 @@ class TopicPolicy < ApplicationPolicy
     user.present?
   end
 
-  def update?
-    user.present? && record.user == user
+  def edit?
+    user.present? && (record.user == user)
   end
 
-  def edit?
+  def update?
     update?
   end
 

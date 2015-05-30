@@ -36,7 +36,8 @@ topics = Topic.all
   bookmark = Bookmark.new(
     description:  Faker::Lorem.characters(15),
     url:          Faker::Internet.url,
-    topic:        topics.sample
+    topic:        topics.sample,
+    user:         users.sample
   )
   bookmark.save!
 end
