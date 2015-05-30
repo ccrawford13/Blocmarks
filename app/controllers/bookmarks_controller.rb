@@ -13,6 +13,7 @@ class BookmarksController < ApplicationController
 
   def create
     @bookmark = @topic.bookmarks.build(bookmark_params)
+    @bookmark.user = User.find(current_user.id)
     authorize @bookmark
     if !@bookmark.save
       flash.now[:error] = "Error creating Bookmark. #{@bookmark.errors.full_messages}"

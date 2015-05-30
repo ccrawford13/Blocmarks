@@ -5,8 +5,7 @@ class BookmarkPolicy < ApplicationPolicy
   end
 
   def edit?
-    @topic = record.topic
-    user.present? && record.topic_id = @topic.id
+    user.present? &&  record.user == user
   end
 
   def update?

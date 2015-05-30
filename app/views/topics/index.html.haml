@@ -1,5 +1,5 @@
 .content-container
-  - if current_user
+  - if policy(@topic).create?
     .row.topic-form
       .large-12.columns.large-centered
         = render partial: 'form', locals: { user: @user, topic: @topic }
