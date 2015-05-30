@@ -2,6 +2,7 @@ class TopicsController < ApplicationController
   
   before_action :user_present?, except:[:new]
   before_action :find_topic,  except:[:index, :new, :create]
+  respond_to :html, :json, except:[:index, :new, :destroy]
 
   def index
     @topics = Topic.all
@@ -17,11 +18,6 @@ class TopicsController < ApplicationController
     authorize @topic
     if !@topic.save
       flash.now[:error] = "Error creating Topic. #{@topic.errors.full_messages}"
-    end
-
-    respond_to do |format|
-      format.html
-      format.js 
     end
   end
 
@@ -39,17 +35,14 @@ class TopicsController < ApplicationController
     if !@topic.update_attributes(topic_params)
       flash.now[:error] = "Error updating Topic. #{@topic.errors.full_messages}"
     end
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def destroy
     authorize @topic
     if !@topic.destroy
       flash.now[:error] = "Error deleting Topic. #{@topic.errors.full_messages}"
+    else
+      redirect_to topics_path
     end
   end
 
