@@ -1,0 +1,18 @@
+%aside.right-off-canvas-menu
+  %ul.off-canvas-list
+    - if user_signed_in?
+      %li
+        %label= current_user.first_name
+      %li
+        = link_to "My Profile", user_path(current_user), id: "my_profile"
+      %li
+        = link_to "User Settings", edit_user_registration_path, id: "edit_user"
+      %li
+        = link_to "Sign Out", destroy_user_session_path, id: "sign_out", method: :delete
+    - else
+      %li
+        %label User Information
+      %li
+        = link_to "Sign Up", new_user_registration_path, id: "sign_up"
+      %li
+        = link_to "Sign In", new_user_session_path, id: "sign_in"

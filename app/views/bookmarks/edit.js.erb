@@ -1,0 +1,9 @@
+var editForm = $(".edit-bookmark#<%= @bookmark.id %>");
+<!-- if editForm has been clicked - click again to hide -->
+if (editForm.is( ":visible" )) {
+  editForm.slideUp( 400 );
+} else {
+<!-- if the form is not visible - show form -->
+  $('.edit-bookmark#<%= @bookmark.id %>').html("<%= escape_javascript(render partial: 'edit', locals: { topic: @topic, bookmark: @bookmark }) %>");
+  $('.edit-bookmark#<%= @bookmark.id %>').slideDown( 400 );
+}

@@ -2,3 +2,5 @@
   .row
     .user-header
       %h1= "#{@user.first_name.titleize}'s Profile"
+    .row.topics-container
+      = render @topics

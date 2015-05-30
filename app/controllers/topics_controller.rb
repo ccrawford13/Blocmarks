@@ -1,10 +1,12 @@
 class TopicsController < ApplicationController
   
-  before_action :user_present?, only:[:index, :create, :update, :edit, :destroy]
-  before_action :find_topic,  only:[:show, :edit, :update, :destroy]
+  before_action :user_present?, except:[:new]
+  before_action :find_topic,  except:[:index, :new, :create]
+  respond_to :html, :json, except:[:index, :new, :destroy]
 
   def index
     @topics = Topic.all
+    @topic = Topic.new
   end
 
   def new
@@ -12,17 +14,16 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = @user.topics.build( topic_params )
+    @topic = @user.topics.build(topic_params)
     authorize @topic
-    @topic.save
-
-    respond_to do |format|
-      format.html
-      format.js 
+    if !@topic.save
+      flash.now[:error] = "Error creating Topic. #{@topic.errors.full_messages}"
     end
   end
 
   def show
+    @bookmark = Bookmark.new
+    @bookmarks = @topic.bookmarks
   end
 
   def edit
@@ -31,24 +32,25 @@ class TopicsController < ApplicationController
 
   def update
     authorize @topic
-    @topic.update_attributes( topic_params )
-
-    respond_to do |format|
-      format.html
-      format.js 
+    if !@topic.update_attributes(topic_params)
+      flash.now[:error] = "Error updating Topic. #{@topic.errors.full_messages}"
     end
   end
 
   def destroy
     authorize @topic
-    @topic.destroy
+    if !@topic.destroy
+      flash.now[:error] = "Error deleting Topic. #{@topic.errors.full_messages}"
+    else
+      redirect_to topics_path
+    end
   end
 
   private
 
   def user_present?
     if current_user
-      @user = current_user 
+      @user = current_user
     end
   end
 

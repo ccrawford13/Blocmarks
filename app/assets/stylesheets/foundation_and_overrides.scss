@@ -142,6 +142,12 @@ $black       : #000000;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
+$primary-color: rgba(67, 149, 64, 0.97);
+// $secondary-color: #e7e7e7;
+// $alert-color: #f04124;
+// $success-color: #43AC6A;
+// $warning-color: #f08a24;
+// $info-color: #a0d3e8;
 
 // We use these to control various global styles
 // $body-bg: $white;
@@ -932,7 +938,7 @@ $header-font-color: $black;
 $include-html-off-canvas-classes: $include-html-classes;
 
 $tabbar-bg: transparent;
-// $tabbar-height: rem-calc(45);
+$tabbar-height: rem-calc(45);
 // $tabbar-icon-width: $tabbar-height;
 // $tabbar-line-height: $tabbar-height;
 // $tabbar-color: $white;
@@ -948,11 +954,18 @@ $tabbar-left-section-border: solid 1px scale-color($tabbar-bg, $lightness: -20%)
 // $tabbar-header-line-height: $tabbar-height;
 // $tabbar-header-margin: 0;
 
+// Off Canvas Tab Bar Headers
+$tabbar-header-color: $primary-color;
+
+// $tabbar-header-weight: bold;
+$tabbar-header-line-height: $tabbar-height + 2rem;
+// $tabbar-header-margin: 0;
+
 // Off Canvas Menu Variables
 // $off-canvas-width: rem-calc(250);
 $off-canvas-bg: $white;
-$off-canvas-bg-hover: scale-color($aluminum, $lightness: 30%);
-$off-canvas-bg-active: scale-color($aluminum, $lightness: -30%);
+$off-canvas-bg-hover: scale-color($primary-color, $lightness: 30%);
+$off-canvas-bg-active: scale-color($primary-color, $lightness: -30%);
 
 // Off Canvas Menu List Variables
 // $off-canvas-label-padding: .3rem rem-calc(15);

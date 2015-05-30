@@ -1,2 +1,9 @@
-$('.edit-form').html("<%= escape_javascript(render partial: 'edit', locals: { user: @user, topic: @topic }) %>");
-$('.edit-form').slideDown(350);
+var editForm = $(".edit-form");
+<!-- if editForm has been clicked - click again to hide -->
+if (editForm.is( ":visible" )) {
+  editForm.slideUp( 400 );
+} else {
+<!-- if the form is not visible - show form -->
+  $('.edit-form').html("<%= escape_javascript(render partial: 'edit', locals: { user: @user, topic: @topic }) %>");
+  $('.edit-form').slideDown( 400 );
+}
