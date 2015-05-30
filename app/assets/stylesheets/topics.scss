@@ -37,6 +37,7 @@
   @extend .columns;
 
   h3 {
+      color: $monsoon;
       padding-bottom: 0;
       margin-bottom: 0;
     }
@@ -44,6 +45,10 @@
     small {
       margin-top: 0;
       padding-top: 0;
+    }
+
+    a {
+      color: $monsoon;
     }
 }
 
@@ -76,7 +81,7 @@
   }
 }
 
-#save_changes, #create_topic, #create_bookmark {
+#save_changes, #create_topic, #create_bookmark, #save_bookmark {
   padding: 0;
   text-align: center;
   vertical-align: middle;
