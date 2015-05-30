@@ -1,7 +1,7 @@
 .content-container
   .inner-container
     .bookmarks-container
-      - if policy(@bookmark).create?
+      - if policy(@topic).create?
         = render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: @bookmark }
     .row.topics-container
       = render partial: 'topic_with_links'

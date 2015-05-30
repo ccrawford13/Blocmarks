@@ -1,9 +1,9 @@
 = content_tag(:li, bookmark, class: 'ind-bookmark', id: "bookmark-#{bookmark.id}") do
   .bookmark-frame
     .bookmark-inner-frame
-      - if policy(@topic).update?
+      - if policy(bookmark).edit?
         .bookmark-controls
           = link_to "", edit_bookmark_path(bookmark), id: "edit_bookmark", class: "fi-pencil", remote: true
           = link_to "",[bookmark], id: "delete_bookmark", class: "fi-trash", method: :delete, remote: true
       %h5= link_to "#{bookmark.description}", "#{bookmark.url}", target: "_blank"
-    .edit-bookmark{style: 'display:none'}
+    .edit-bookmark{id: "#{bookmark.id}", style: 'display:none'}

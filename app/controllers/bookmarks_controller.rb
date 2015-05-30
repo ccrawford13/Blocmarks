@@ -25,22 +25,33 @@ class BookmarksController < ApplicationController
   end
 
   def edit
+    @bookmark = Bookmark.find(params[:id])
     authorize @bookmark
   end
 
   def update
-    @bookmark.find(params[:id])
+    @bookmark = Bookmark.find(params[:id])
     authorize @bookmark
     if !@bookmark.update_attributes(bookmark_params)
       flash.now[:error] = "Error updating Bookmark. #{@bookmark.errors.full_messages}"
     end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def destroy
-    authorize @bookmark
     @bookmark = Bookmark.find(params[:id])
+    authorize @bookmark
     if !@bookmark.destroy
       flash.now[:error] = "Error deleting Bookmark. #{@bookmark.errors.full_messages}"
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 

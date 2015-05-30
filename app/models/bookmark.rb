@@ -1,6 +1,6 @@
 class Bookmark < ActiveRecord::Base
-  belongs_to :user, dependent: :destroy
-  belongs_to :topic, dependent: :destroy
+  belongs_to :user
+  belongs_to :topic
   
   # validates_presence_of :user
   validates_presence_of :topic
