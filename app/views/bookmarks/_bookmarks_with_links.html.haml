@@ -1,9 +1,13 @@
 = content_tag(:li, bookmark, class: 'ind-bookmark', id: "bookmark-#{bookmark.id}") do
   .bookmark-frame
-    .bookmark-inner-frame
+    .bookmark-inner-frame.small-12.columns
       - if policy(bookmark).edit?
         .bookmark-controls
           = link_to "", edit_bookmark_path(bookmark), id: "edit_bookmark", class: "fi-pencil", remote: true
           = link_to "",[bookmark], id: "delete_bookmark", class: "fi-trash", method: :delete, remote: true
-      %h5= link_to "#{bookmark.description}", "#{bookmark.url}", target: "_blank"
+      .small-7.columns
+        %h5= link_to "#{bookmark.description}", "#{bookmark.url}", target: "_blank"
+      .bookmark-controls
+        / Remove Bookmark.find logic
+        = render partial: 'likes/like', locals: { favorite_bookmark: @favorite_bookmark, like: @like}
     .edit-bookmark{id: "#{bookmark.id}", style: 'display:none'}

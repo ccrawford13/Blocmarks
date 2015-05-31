@@ -4,5 +4,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @topics = @user.topics
     @bookmarks = @user.bookmarks
+    @likes = @user.likes
   end
 end

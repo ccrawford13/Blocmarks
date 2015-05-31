@@ -1,6 +1,7 @@
 class BookmarksController < ApplicationController
   
   before_action :find_topic, only:[:create]
+  respond_to :html, :json, except:[:index, :new]
 
   def index
     object = params.key?(:topic_id) ? Topic.find(params[:topic_id]) : User.find(params[:user_id])
@@ -18,11 +19,6 @@ class BookmarksController < ApplicationController
     if !@bookmark.save
       flash.now[:error] = "Error creating Bookmark. #{@bookmark.errors.full_messages}"
     end
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def edit
@@ -36,11 +32,6 @@ class BookmarksController < ApplicationController
     if !@bookmark.update_attributes(bookmark_params)
       flash.now[:error] = "Error updating Bookmark. #{@bookmark.errors.full_messages}"
     end
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def destroy
@@ -48,11 +39,6 @@ class BookmarksController < ApplicationController
     authorize @bookmark
     if !@bookmark.destroy
       flash.now[:error] = "Error deleting Bookmark. #{@bookmark.errors.full_messages}"
-    end
-
-    respond_to do |format|
-      format.html
-      format.js
     end
   end
 

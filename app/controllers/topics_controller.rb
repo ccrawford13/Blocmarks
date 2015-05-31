@@ -24,6 +24,21 @@ class TopicsController < ApplicationController
   def show
     @bookmark = Bookmark.new
     @bookmarks = @topic.bookmarks
+
+    # Trying to find the Bookmark associated with the like
+    @favorite_bookmark = Bookmark.find(params[:id])
+
+    # Check whether a like exists -
+    if current_user.liked(@favorite_bookmark)
+      # If so set it here - 
+      @like = current_user.likes.find_by_bookmark_id(@favorite_bookmark.id)
+    else
+      # If not set it to a new Like object
+      @like = Like.new
+    end
+    
+    # @favorite_bookmark = @like.bookmark
+
   end
 
   def edit

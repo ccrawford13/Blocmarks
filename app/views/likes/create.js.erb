@@ -1,0 +1,3 @@
+<% if @like.save %>
+  $(".like.small-2").html("<%= escape_javascript(render partial: 'likes/like', locals: { favorite_bookmark: @favorite_bookmark, like: @like}) %>");
+<% end %>

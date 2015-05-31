@@ -1,6 +1,7 @@
 class Bookmark < ActiveRecord::Base
   belongs_to :user
   belongs_to :topic
+  has_many :likes
   
   # validates_presence_of :user
   validates_presence_of :topic
