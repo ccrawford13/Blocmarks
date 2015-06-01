@@ -5,9 +5,10 @@ class LikesController < ApplicationController
     @bookmark = Bookmark.find(params[:bookmark_id])
     @like = current_user.likes.build(bookmark: @bookmark)
     @favorite_bookmark = @like.bookmark
+    @topic = @favorite_bookmark.topic
 
     if @like.save
-      redirect_to user_path(current_user)
+      redirect_to @topic
       flash[:notice] = "Favorite successfully added"
     else
       flash[:error] = "There was an error creating your Favorite"
@@ -15,13 +16,12 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @favorite_bookmark = Bookmark.find(params[:id])
-    # @like = current_user.likes.find(params[:id])
     @like = current_user.likes.find(params[:id])
-    # @bookmark = like.bookmark
+    @favorite_bookmark = @like.bookmark
+    @topic = @favorite_bookmark.topic
     
     if @like.destroy
-      redirect_to user_path(current_user)
+      redirect_to @topic
       flash[:notice] = "Favorite successfully removed"
     else
       flash[:error] = "There was an error removing your Favorite"

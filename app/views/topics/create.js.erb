@@ -2,6 +2,6 @@
   $('#topics').prepend("<%= escape_javascript(render(@topic)) %>");
    $('.new_topic').html("<%= escape_javascript(render partial: 'form', locals: { user: @user, topics: @topics }) %>");
  <% else %>
-   $('.topic-form').prepend("<div class='alert-box round alert'> <%= flash[:error] = "Error Creating Topic - Topic must be within 5-20 Characters" %> </div>");
+   $('.topic-form').prepend("<div class='alert-box round alert'> <%= flash[:error] %> </div>");
    $('.alert-box').fadeOut(6000);
  <% end %>

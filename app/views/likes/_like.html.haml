@@ -1,5 +1,7 @@
+- like = current_user.likes.find_by_bookmark_id(favorite_bookmark)
+- like ||= Like.new
 = div_for(like, class: "small-2") do
-  - if current_user.liked(favorite_bookmark)
-    = link_to "", [like], class: "fi-trash", id: "remove_favorite", method: :delete
+  - if like.persisted?
+    = link_to "", [like], class: "fi-star favorited", id: "remove_favorite", method: :delete
   - else
-    = link_to "", [favorite_bookmark, Like.new], class: "fi-star favorited", id: "favorite_bookmark", method: :post
+    = link_to "", [favorite_bookmark, like], class: "fi-star", id: "favorite_bookmark", method: :post

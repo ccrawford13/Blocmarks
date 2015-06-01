@@ -8,6 +8,5 @@
       .small-7.columns
         %h5= link_to "#{bookmark.description}", "#{bookmark.url}", target: "_blank"
       .bookmark-controls
-        / Remove Bookmark.find logic
-        = render partial: 'likes/like', locals: { favorite_bookmark: @favorite_bookmark, like: @like}
+        = render partial: 'likes/like', locals: { favorite_bookmark: bookmark}
     .edit-bookmark{id: "#{bookmark.id}", style: 'display:none'}
