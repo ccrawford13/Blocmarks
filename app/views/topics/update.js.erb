@@ -3,5 +3,4 @@
   $('.edit-form').slideUp(350);
 <% else %>
   $('.topics-container').prepend("<div class='alert-box round alert'> <%= flash[:error] %> </div>");
-  $('.alert-box').fadeOut(6000);
 <% end %>

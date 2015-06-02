@@ -2,5 +2,4 @@
   $('#bookmark-<%= @bookmark.id %>').fadeOut(325);
 <% else %>
   $('#bookmark-list').prepend("<div class='alert-box round alert'> <%= flash[:error] %> </div>");
-  $('.alert-box').fadeOut( 6000 );
 <% end %>

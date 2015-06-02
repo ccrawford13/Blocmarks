@@ -3,5 +3,4 @@
    $('.new_topic').html("<%= escape_javascript(render partial: 'form', locals: { user: @user, topics: @topics }) %>");
  <% else %>
    $('.topic-form').prepend("<div class='alert-box round alert'> <%= flash[:error] %> </div>");
-   $('.alert-box').fadeOut(6000);
  <% end %>
