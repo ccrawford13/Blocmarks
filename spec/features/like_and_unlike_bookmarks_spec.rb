@@ -5,50 +5,66 @@ describe "Liking bookmarks", js: true do
 
   let(:user) { create(:user) }
   let(:topic) { create(:topic, user: user) }
-  let(:bookmark) { create(:bookmark, topic: topic, user: user) }
+  let(:bookmark) { create(:bookmark, topic: topic) }
 
   before do
     login_as(user, scope: :user)
     visit topic_path(topic)
+    create_bookmark
   end
 
   context "when user is present" do
-    # Will add like_policy after functionality is stable
-    it "displays link to favorite post" do
-      expect(page).to have_link "favorite_bookmark"
-    end
-  end
 
-  context "when no user is present" do
-    # Will add like_policy after functionality is stable
-    # this will allow authorization of permissions before displaying link to favorite
-    xit "hides link to favorite post" do
-      expect(page).not_to have_link "favorite_post"
-    end
-  end
-
-  context "when not favorited" do
-    # When Bookmark has not been favorited - display link to add to favorites
     it "displays link to favorite bookmark" do
       expect(page).to have_link "favorite_bookmark"
     end
   end
 
-  context "when favorited" do
-    # Toggle as favorited to test changes in state
+  context "when no user is present" do
+
     before do
-      click_link "favorite_post"
+      sign_out_user
+      visit topic_path(topic)
     end
-    # When Bookmark has been favorited - change styling to show highlighted star
-    xit "highlights star when favorited" do
-      expect(page).to have_tag("a.fi-star.favorited")
+
+    it "hides link to favorite bookmark" do
+      expect(page).not_to have_link "favorite_bookmark"
     end
-    # When Bookmark has been favorited - display link to remove from favorites
+  end
+
+  context "when not favorited" do
+
+    it "displays link to favorite bookmark" do
+      expect(page).to have_link "favorite_bookmark"
+    end
+
+    it "displays plain star" do
+      expect(page).to have_selector("a.fi-star")
+    end
+  end
+
+  context "when favorited" do
+
+    before do
+      click_link "favorite_bookmark"
+    end
+
+    it "highlights star when favorited" do
+      expect(page).to have_selector("a.fi-star.favorited")
+    end
+    
     it "displays link to remove favorite" do
       expect(page).to have_link "remove_favorite"
     end
   end
+end
 
-  # 
+def create_bookmark
+  fill_in "description", with: bookmark.description
+  fill_in "url", with: bookmark.url
+  click_button "create_bookmark"
+end
 
+def sign_out_user
+  click_link "sign_out"
 end
