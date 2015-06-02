@@ -3,5 +3,4 @@
   $('.new_bookmark').html("<%= escape_javascript(render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: Bookmark.new }) %>");
 <% else %>
   $('.topics-container').prepend("<div class='alert-box round alert'> <%= flash[:error] %> </div>");
-  $('.alert-box').fadeOut(6000);
 <% end %>

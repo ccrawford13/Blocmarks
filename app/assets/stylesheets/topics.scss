@@ -54,7 +54,7 @@
 
 // Styling Specific to #show
 
-// Edit & Delete Links
+// Topic Edit & Delete Links
 
 .delete-link {
   @extend .small-2;
@@ -68,18 +68,26 @@
   }
 }
 
+// Styling for Bookmark Edit, Delete, & Favorite
+
 .bookmark-controls {
   @extend .small-2;
   @extend .columns;
   padding: 0;
 
-  .fi-pencil, .fi-trash {
+  .fi-pencil, .fi-trash, .fi-star {
     display: inline-block;
     color: $aluminum;
     font-size: 18px;
-    padding: 0.25em;
+    padding: 0.125em;
   }
+   
+    .favorited {
+      color: $primary-color;
+    }
 }
+
+// Button Styling for Topic & Bookmark 
 
 #save_changes, #create_topic, #create_bookmark, #save_bookmark {
   padding: 0;
@@ -90,5 +98,5 @@
 
 .ind-bookmark {
   text-align: center;
-  padding: .5em;
+  padding: 1em;
 }

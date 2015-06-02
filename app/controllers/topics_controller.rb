@@ -23,7 +23,7 @@ class TopicsController < ApplicationController
 
   def show
     @bookmark = Bookmark.new
-    @bookmarks = @topic.bookmarks
+    @bookmarks = @topic.bookmarks.includes(:likes)
   end
 
   def edit

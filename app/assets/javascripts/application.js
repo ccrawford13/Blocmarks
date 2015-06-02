@@ -17,3 +17,8 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+// Flash FadeOut Function
+setTimeout(function(){
+  $('.alert-box').fadeOut();
+}, 6000);

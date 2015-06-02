@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :topics, only: [:index, :create]
 
   resources :topics, except: [:index, :create] do
-    resources :bookmarks, except: [:new, :show], shallow: true
+    resources :bookmarks, except: [:new, :show], shallow: true do
+      resources :likes, only: [:create, :destroy], shallow: true
+    end
   end
 
   # Incoming Mail Controller

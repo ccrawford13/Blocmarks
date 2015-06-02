@@ -32,7 +32,7 @@ end
 
 topics = Topic.all
 
-50.times do
+75.times do
   bookmark = Bookmark.new(
     description:  Faker::Lorem.characters(15),
     url:          Faker::Internet.url,
@@ -42,6 +42,19 @@ topics = Topic.all
   bookmark.save!
 end
 
+bookmarks = Bookmark.all
+
+30.times do
+  like = Like.new(
+    user:         users.sample,
+    bookmark:     bookmarks.sample
+  )
+  like.save!
+end
+
+likes = Like.all
+
 puts "Created #{User.count} users"
 puts "Created #{Topic.count} topics"
 puts "Created #{Bookmark.count} bookmarks"
+puts "Created #{Like.count} likes"
