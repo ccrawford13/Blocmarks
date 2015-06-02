@@ -33,6 +33,8 @@ gem 'newrelic_rpm'
 gem 'pundit'
 # RuboCop - Check code against Ruby Style Guide
 gem 'rubocop', require: false
+# Draper - Handle Presentation(View) Based Logic
+gem 'draper', '~> 1.3'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
