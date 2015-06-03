@@ -1,8 +1,18 @@
 .content-container
   .row
     .user-header
-      %h1= "#{@user.first_name.titleize}'s Profile"
-      %h2 Number of Likes
-      %p= @likes.count
-    .row.topics-container
-      = render @topics
+      %h1= "#{user.full_name}'s Profile"
+    .row{"data-equalizer" => ""}
+      .medium-4.columns.panel#favorite-bookmarks{"data-equalizer-watch" => ""}
+        %h3= "Favorite Bookmarks (#{user.like_count})"
+        .panel
+          .small-12.small-centered.columns
+            %h4 Recent Favorites
+          = render partial: 'bookmarks/user_liked_bookmarks', collection: @likes, as: :like
+          = paginate @likes
+      .medium-4.columns.panel{"data-equalizer-watch" => ""}
+        %h3 Your Topics
+        / topics partial - show only topic title with link
+      .medium-4.columns.panel{"data-equalizer-watch" => ""}
+        %h3 Your Bookmarks
+        / bookmarks partial - show only bookmark with small link to topic - same as favorites
