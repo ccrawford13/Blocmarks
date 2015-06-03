@@ -8,7 +8,7 @@ class LikesController < ApplicationController
     @topic = @favorite_bookmark.topic
 
     if @like.save
-      redirect_to @topic
+      controlled_redirect(@topic, current_user)
       flash[:notice] = "Favorite successfully added"
     else
       flash[:error] = "There was an error creating your Favorite"
@@ -21,10 +21,19 @@ class LikesController < ApplicationController
     @topic = @favorite_bookmark.topic
     
     if @like.destroy
-      redirect_to @topic
+      controlled_redirect(@topic, current_user)
       flash[:notice] = "Favorite successfully removed"
     else
       flash[:error] = "There was an error removing your Favorite"
+    end
+  end
+
+  # If Like is Added or Deleted outside of Topics#show - redirect to User#show
+  def controlled_redirect(redirect_object, user) 
+    if URI(request.referer).path == user_path(user)
+      redirect_to user_path(user)
+    else
+      redirect_to redirect_object
     end
   end
 end
