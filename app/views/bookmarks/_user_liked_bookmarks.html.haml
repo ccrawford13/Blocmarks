@@ -1,0 +1,10 @@
+- bookmark = like.bookmark
+= div_for(bookmark, class: 'ind-favorite', id: "favorite-#{bookmark.id}") do
+  .bookmark-frame.row
+    .small-10.columns
+      %h5= link_to "#{bookmark.description}", "#{bookmark.url}", target: "_blank"
+    .bookmark-controls.small-2.columns
+      = render partial: 'likes/like', locals: { favorite_bookmark: bookmark}
+  .author.row
+    .small-12.columns
+      %small= like.author_output

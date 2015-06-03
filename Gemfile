@@ -35,6 +35,8 @@ gem 'pundit'
 gem 'rubocop', require: false
 # Draper - Handle Presentation(View) Based Logic
 gem 'draper', '~> 1.3'
+# Pagination
+gem 'kaminari'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
