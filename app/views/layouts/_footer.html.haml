@@ -1,0 +1,15 @@
+%footer.footer
+  .row
+    .small-12.columns
+      %p.slogan Organized Inspiration
+      %p.links
+        = link_to "Home", root_path, id: "footer_home"
+        = link_to "Topics", topics_path, id: "footer_topics"
+        = link_to "Contact", welcome_contact_path, id: "footer_contact"
+        - if current_user
+          = link_to "Profile", user_path(current_user), id: "footer_profile"
+          = link_to "Settings", edit_user_registration_path, id: "footer_settings"
+        - else
+          = link_to "Sign In", new_user_session_path, id: "footer_sign_in"
+          = link_to "Sign Up", new_user_registration_path, id: "footer_sign_up"
+      %p.copywrite Chad Crawford © 2015

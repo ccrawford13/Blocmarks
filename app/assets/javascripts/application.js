@@ -21,4 +21,4 @@ $(function(){ $(document).foundation(); });
 // Flash FadeOut Function
 setTimeout(function(){
   $('.alert-box').fadeOut();
-}, 6000);
+}, 4000);

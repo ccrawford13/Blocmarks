@@ -9,5 +9,31 @@
   @extend .large-centered;
   text-align: center;
   text-shadow: .74px .7px .05px $steel;
+}
 
+.medium-4.columns.panel {
+  padding: 2rem;
+}
+
+.panel {
+  background-color: rgba($ghost, .8);
+}
+
+.inner-panel {
+  @extend .panel;
+  padding: 1rem;
+
+}
+
+#favorite, #topics, #bookmarks {
+  padding: .5rem;
+}
+
+#content-header {
+  text-align: center;
+}
+
+
+small {
+  font-size: 4rem;
 }

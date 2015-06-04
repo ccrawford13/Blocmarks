@@ -10,21 +10,23 @@
     = javascript_include_tag "application", 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body.background-image
-    .off-canvas-wrap{"data-offcanvas" => ""}
-      .inner-wrap
-        %nav.tab-bar
-          %section.left-small
-            %a.left-off-canvas-toggle.menu-icon{:href => "#"}
-              %span
-          %section.middle.tab-bar-section
-            %h1.title= link_to "Blocmarks", root_path, id: "title_link"
-          %section.right-small
-            %a.right-off-canvas-toggle.menu-icon{:href => "#"}
-              %span
-        = render partial: 'layouts/nav_page_links'
-        = render partial: 'layouts/nav_user_links'
-        %section.main-section
-          = render partial: 'layouts/flash_messages'
-          = yield
-    %a.exit-off-canvas    
-    
+    %nav.top-bar{"data-topbar" => "", :role => "navigation"}
+      %ul.title-area
+        %li.name
+          %h1
+            = link_to "Blocmarks", root_path, id: "home_link"
+        / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+        %li.toggle-topbar.menu-icon
+          %a{:href => "#"}
+            %span Menu
+      %section.top-bar-section
+        / Right Nav Section
+        %ul.right
+          = render partial: 'layouts/nav_user_links'
+        / Left Nav Section
+        %ul.left
+          = render partial: 'layouts/nav_page_links'
+    = render partial: 'layouts/flash_messages'
+    = yield
+  = render partial: 'layouts/footer'
+  
