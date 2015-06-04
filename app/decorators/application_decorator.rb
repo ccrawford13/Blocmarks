@@ -3,4 +3,8 @@ class ApplicationDecorator < Draper::Decorator
   def self.collection_decorator_class
     PaginatingDecorator
   end
+
+  def creation_date
+    created_at.strftime("%a %b %d, %I:%M%p")
+  end
 end

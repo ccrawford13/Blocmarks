@@ -1,7 +1,6 @@
 class LikeDecorator < ApplicationDecorator
   delegate_all
   decorates_finders
-  paginates_per 5
   
   def author_output
     h.capture do

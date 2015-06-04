@@ -36,13 +36,22 @@ class BookmarksController < ApplicationController
 
   def destroy
     @bookmark = Bookmark.find(params[:id])
+    @user = @bookmark.user
     authorize @bookmark
-    if !@bookmark.destroy
+    if @bookmark.destroy
+      controlled_redirect(@user)
+    else
       flash.now[:error] = "Error deleting Bookmark. #{@bookmark.errors.full_messages}"
     end
   end
 
   private
+
+  def controlled_redirect(user) 
+    if URI(request.referer).path == user_path(user)
+      redirect_to user_path(user)
+    end
+  end
 
   def bookmark_params
     params.require(:bookmark).permit(:description, :url)

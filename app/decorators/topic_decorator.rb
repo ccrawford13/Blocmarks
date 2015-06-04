@@ -4,10 +4,6 @@ class TopicDecorator < ApplicationDecorator
   decorates_association :user
   paginates_per 20
 
-  def creation_date
-    created_at.strftime("%a %b %d, %I:%M%p")
-  end
-
   def author_name
     [user.first_name, user.last_name].join(" ").titleize
   end
@@ -17,7 +13,7 @@ class TopicDecorator < ApplicationDecorator
   end
 
   def bookmark_count
-    object.bookmarks.count
+    bookmarks.count
   end
 
   def topic_link
@@ -31,6 +27,13 @@ class TopicDecorator < ApplicationDecorator
       h.concat " ("
       h.concat bookmark_count
       h.concat ")"
+    end
+  end
+
+  def linked_title
+    h.capture do
+      h.concat "# "
+      h.concat topic_link
     end
   end
 end

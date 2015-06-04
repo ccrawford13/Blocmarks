@@ -6,7 +6,7 @@ RSpec.describe TopicDecorator, type: :decorator do
   let(:user) { build(:user, first_name: 'Jon', last_name: 'Doe') }
 
   it 'returns formatted creation date' do
-    expect(topic.creation_date).to eq(topic.created_at.strftime("%a %b %d, %I:%M%p"))
+    expect(topic.creation_date).to eq topic.created_at.strftime("%a %b %d, %I:%M%p")
   end
 
   describe '#author_name' do

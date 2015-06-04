@@ -5,7 +5,12 @@ $(document).ready(function() {
   });
 
   $('#topic-pagination').on("click", function () {
-    $('#topic-pagination').html("<%= escape_javascript(paginate(@likes, remote: true)) %>");
+    $('#topic-pagination').html("<%= escape_javascript(paginate(@topics, remote: true)) %>");
     $('#topics').html("<%= escape_javascript(render partial: 'topics/user_topics', collection: @topics, as: :topic) %>");
+  });
+
+  $('#bookmark-pagination').on("click", function () {
+    $('#bookmark-pagination').html("<%= escape_javascript(paginate(@bookmarks, remote: true)) %>");
+    $('#bookmarks').html("<%= escape_javascript(render partial: 'bookmarks/user_bookmarks', collection: @bookmarks, as: :bookmark) %>");
   });
 });

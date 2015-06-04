@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UserDecorator do
+RSpec.describe UserDecorator, type: :decorator do
 
   describe '#full_name' do
 
@@ -25,6 +25,10 @@ RSpec.describe UserDecorator do
 
     it '#topic_count returns User topic count' do
       expect(user.topic_count).to eq user.topics.count
+    end
+
+    it '#bookmark_count returns User bookmark count' do
+      expect(user.bookmark_count).to eq user.topics.count
     end
   end
 end

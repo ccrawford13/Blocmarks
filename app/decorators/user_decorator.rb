@@ -1,7 +1,6 @@
 class UserDecorator < ApplicationDecorator
   delegate_all
   decorates_finders
-  decorates_association :bookmarks
   paginates_per 10
 
   def full_name

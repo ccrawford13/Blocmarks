@@ -4,23 +4,29 @@
       %h1= "#{user.full_name}'s Profile"
     .row{"data-equalizer" => ""}
       .medium-4.columns.panel#favorite-bookmarks{"data-equalizer-watch" => ""}
-        %h3= "Favorite Bookmarks (#{user.like_count})"
+        %h3= "Favorites (#{user.like_count})"
         .panel
           .small-12.small-centered.columns
             %h4 Recent Favorites
           .small-12#favorites
             = render partial: 'bookmarks/user_liked_bookmarks', collection: @likes, as: :like
           .small-12.colums#like-pagination
-            = paginate @likes, param_name: :like, remote: true
-      .medium-4.columns.panel{"data-equalizer-watch" => ""}
-        %h3= "Your Topics (#{user.topic_count})"
+            = paginate @likes, remote: true
+      .medium-4.columns.panel#user-topics{"data-equalizer-watch" => ""}
+        %h3= "Topics (#{user.topic_count})"
         .panel
           .small-12.small-centered.columns
             %h4 Recent Topics
           .small-12#topics
             = render partial: 'topics/user_topics', collection: @topics, as: :topic
           .small-12.colums#topic-pagination
-            = paginate @topics, param_name: :topic, remote: true
-      .medium-4.columns.panel{"data-equalizer-watch" => ""}
-        %h3 Your Bookmarks
-        / bookmarks partial - show only bookmark with small link to topic - same as favorites
+            = paginate @topics, remote: true
+      .medium-4.columns.panel#user-bookmarks{"data-equalizer-watch" => ""}
+        %h3= "Bookmarks (#{user.bookmarks.count})"
+        .panel
+          .small-12.small-centered.columns
+            %h4 Recent Bookmarks
+          .small-12#bookmarks
+            = render partial: 'bookmarks/user_bookmarks', collection: @bookmarks, as: :bookmark
+          .small-12.colums#bookmark-pagination
+            = paginate @bookmarks, remote: true
