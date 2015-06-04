@@ -13,7 +13,7 @@
           .small-12.colums#like-pagination
             = paginate @likes, param_name: :like, remote: true
       .medium-4.columns.panel{"data-equalizer-watch" => ""}
-        %h3= "Your Topics (#{user.topics.count})"
+        %h3= "Your Topics (#{user.topic_count})"
         .panel
           .small-12.small-centered.columns
             %h4 Recent Topics

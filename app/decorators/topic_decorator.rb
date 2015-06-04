@@ -5,11 +5,11 @@ class TopicDecorator < ApplicationDecorator
   paginates_per 20
 
   def creation_date
-    created_at.time.to_formatted_s(:long)
+    created_at.strftime("%a %b %d, %I:%M%p")
   end
 
   def author_name
-    "#{user.first_name.titleize} #{user.last_name.titleize}"
+    [user.first_name, user.last_name].join(" ").titleize
   end
 
   def author_information

@@ -5,10 +5,14 @@ class UserDecorator < ApplicationDecorator
   paginates_per 10
 
   def full_name
-    "#{first_name.titleize} #{last_name.titleize}"
+    [first_name, last_name].join(" ").titleize
   end
 
   def like_count
     likes.count
+  end
+
+  def topic_count
+    topics.count
   end
 end
