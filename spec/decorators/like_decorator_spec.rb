@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe LikeDecorator do
+  RSpec.describe LikeDecorator, type: :decorator do
 end

@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
-
+  decorates_assigned :user
   before_action :authorize_user
+  respond_to :html, :json
 
   def show
-    @user = User.find(params[:id])
-    @topics = @user.topics
-    @bookmarks = @user.bookmarks
-    @likes = @user.likes
+    @users = UserDecorator.decorate_collection(User.all)
+    @user = UserDecorator.find(params[:id])
+    @topics = @user.topics.order(:created_at).page(params[:page]).per(5).decorate
+    @bookmarks = @user.bookmarks.order(:created_at).page(params[:page]).per(5).decorate
+    @likes = @user.likes.order(:created_at).page(params[:page]).per(5).decorate
   end
 
   def authorize_user

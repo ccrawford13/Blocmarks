@@ -2,7 +2,7 @@
   .large-10.columns#topic-container
     .topic-title
       %h3= link_to "# #{topic.title.titleize}", topic_path(topic), id: "topic_link"
-      %small= topic.created_at.to_time
+      %small= topic.author_information
   .bookmark-container
     %ul.small-block-grid-3.medium-block-grid-4#bookmark-list
       = render topic.bookmarks

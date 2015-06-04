@@ -24,20 +24,56 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-color: #fff;
-  background-image: url('in_the_clouds2.jpg');
+  background-color: $white;
+  // background-image: url('in_the_clouds2.jpg');
 }
 
 // Centered content box 
 
 .content-container {
   border: $aluminum 1pt solid;
-  background-color: rgba($ghost,.7);
+  background-color: rgba($ghost,.6);
   position: relative;
-  margin: 5% 10% 0 10%;
-  padding: 1em;
+  margin: 5% 10% 10% 10%;
+  padding: 1rem;
 }
 
 h1.title {
   font-size: 28px;
+}
+
+.footer {
+  background-color: $jet;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 1.5rem;
+
+  p {
+    &.slogan {
+      color: $aluminum;
+      font-size: 1.8rem;
+      margin: 0 0 1rem;
+    }
+    &.copywrite {
+      color: $aluminum;
+      font-size: 0.875rem;
+      margin: 0;
+    }
+  }
+
+  .links a {
+    list-style: none;
+    font-weight: bold;
+    color: $white;
+    padding: 3rem 0 2rem;
+    margin: 0;
+    &::after {
+      content: "•";
+      padding: 0 0.4rem 0 0.8rem;
+    }
+    &:last-child::after {
+      content: "";
+      padding: 0 0.4rem 0 0.8rem;
+    }
+  }
 }

@@ -1,0 +1,9 @@
+= div_for(topic, class: 'ind-topic', id: "topic-#{topic.id}") do
+  .row
+    .small-10.columns#topic-container
+      %h5= topic.linked_title_with_count
+    .small-2.columns
+      = link_to "", [topic], id: "delete_topic", class: "fi-trash", method: :delete
+  .author.row
+    .small-12.columns
+      %small= topic.creation_date

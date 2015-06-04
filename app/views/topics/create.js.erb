@@ -1,6 +1,6 @@
 <% if @topic.valid? %>
   $('#topics').prepend("<%= escape_javascript(render(@topic)) %>");
-   $('.new_topic').html("<%= escape_javascript(render partial: 'form', locals: { user: @user, topics: @topics }) %>");
+   $('.new_topic').html("<%= escape_javascript(render partial: 'topics/form', locals: { user: @user, topic: Topic.new }) %>");
  <% else %>
    $('.topic-form').prepend("<div class='alert-box round alert'> <%= flash[:error] %> </div>");
  <% end %>

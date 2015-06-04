@@ -1,8 +1,32 @@
 .content-container
-  .row
+  .row.main-content
     .user-header
-      %h1= "#{@user.first_name.titleize}'s Profile"
-      %h2 Number of Likes
-      %p= @likes.count
-    .row.topics-container
-      = render @topics
+      %h1= "#{user.full_name}'s Profile"
+    .row{"data-equalizer" => ""}
+      .medium-4.columns.panel#favorite-bookmarks{"data-equalizer-watch" => ""}
+        %h3= "Favorites (#{user.like_count})"
+        .inner-panel.row
+          .small-12.columns
+            %h4#content-header Recent Favorites
+          .small-12.columns#favorites
+            = render partial: 'bookmarks/user_liked_bookmarks', collection: @likes, as: :like
+          .small-12.columns#like-pagination
+            = paginate @likes, remote: true
+      .medium-4.columns.panel#user-topics{"data-equalizer-watch" => ""}
+        %h3= "Topics (#{user.topic_count})"
+        .inner-panel.row
+          .small-12.columns
+            %h4#content-header Recent Topics
+          .small-12.columns#topics
+            = render partial: 'topics/user_topics', collection: @topics, as: :topic
+          .small-12.columns#topic-pagination
+            = paginate @topics, remote: true
+      .medium-4.columns.panel#user-bookmarks{"data-equalizer-watch" => ""}
+        %h3= "Bookmarks (#{user.bookmarks.count})"
+        .inner-panel.row
+          .small-12.columns
+            %h4#content-header Recent Bookmarks
+          .small-12.columns#bookmarks
+            = render partial: 'bookmarks/user_bookmarks', collection: @bookmarks, as: :bookmark
+          .small-12.columns#bookmark-pagination
+            = paginate @bookmarks, remote: true

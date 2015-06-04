@@ -9,4 +9,6 @@ class Bookmark < ActiveRecord::Base
   validates_length_of :description, minimum: 3, maximum: 30;
   validates_presence_of :url
   validates :url, :format => URI::regexp(%w(http https))
+
+  default_scope { order(created_at: :desc) }
 end

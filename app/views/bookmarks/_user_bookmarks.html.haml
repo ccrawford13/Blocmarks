@@ -1,0 +1,13 @@
+- topic = bookmark.topic.decorate
+= div_for(bookmark, class: 'bookmark', id: "bookmark-#{bookmark.id}") do
+  .bookmark-frame.row
+    .small-10.columns
+      %h5= link_to "#{bookmark.description}", "#{bookmark.url}", target: "_blank"
+    .small-2.columns
+      = link_to "", [bookmark], id: "delete_bookmark", class: "fi-trash", method: :delete
+  .author.row
+    .small-6.columns
+      %small= topic.linked_title
+    .small-6.columns
+      %small= bookmark.creation_date
+  
