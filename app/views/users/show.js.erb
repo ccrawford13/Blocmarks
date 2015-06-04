@@ -1,0 +1,11 @@
+$(document).ready(function() {
+  $('#like-pagination').on("click", function () {
+    $('#like-pagination').html("<%= escape_javascript(paginate(@likes, remote: true)) %>");
+    $('#favorites').html("<%= escape_javascript(render partial: 'bookmarks/user_liked_bookmarks', collection: @likes, as: :like) %>");
+  });
+
+  $('#topic-pagination').on("click", function () {
+    $('#topic-pagination').html("<%= escape_javascript(paginate(@likes, remote: true)) %>");
+    $('#topics').html("<%= escape_javascript(render partial: 'topics/user_topics', collection: @topics, as: :topic) %>");
+  });
+});
