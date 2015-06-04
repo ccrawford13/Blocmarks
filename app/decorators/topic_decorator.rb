@@ -1,13 +1,36 @@
-class TopicDecorator < Draper::Decorator
+class TopicDecorator < ApplicationDecorator
   delegate_all
+  decorates_finders
+  decorates_association :user
+  paginates_per 20
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def creation_date
+    created_at.time.to_formatted_s(:long)
+  end
 
+  def author_name
+    "#{user.first_name.titleize} #{user.last_name.titleize}"
+  end
+
+  def author_information
+    "Created by: #{author_name} on #{creation_date}"
+  end
+
+  def bookmark_count
+    object.bookmarks.count
+  end
+
+  def topic_link
+    h.link_to object.title.titleize, h.topic_path(object)
+  end
+
+  def linked_title_with_count
+    h.capture do
+      h.concat "# "
+      h.concat topic_link
+      h.concat " ("
+      h.concat bookmark_count
+      h.concat ")"
+    end
+  end
 end

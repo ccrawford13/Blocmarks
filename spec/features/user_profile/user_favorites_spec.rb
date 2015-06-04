@@ -4,7 +4,6 @@ describe 'User Favorites', js: true do
   Capybara.javascript_driver = :webkit
 
   let(:user) { create(:user) }
-  let(:user2) { create(:user) }
   let(:topic) { create(:topic, user: user) }
   let(:bookmark) { create(:bookmark, topic: topic) }
   let!(:like) { create(:like, bookmark: bookmark, user: user) }
@@ -35,7 +34,9 @@ describe 'User Favorites', js: true do
     end
 
     it 'displays pagination links' do
-      expect(page).to have_selector '.pagination'
+      within('#favorite-bookmarks')do
+        expect(page).to have_selector '.pagination'
+      end
     end
   end
 

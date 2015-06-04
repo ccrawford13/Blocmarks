@@ -8,11 +8,19 @@
         .panel
           .small-12.small-centered.columns
             %h4 Recent Favorites
-          = render partial: 'bookmarks/user_liked_bookmarks', collection: @likes, as: :like
-          = paginate @likes
+          .small-12#favorites
+            = render partial: 'bookmarks/user_liked_bookmarks', collection: @likes, as: :like
+          .small-12.colums#like-pagination
+            = paginate @likes, param_name: :like, remote: true
       .medium-4.columns.panel{"data-equalizer-watch" => ""}
-        %h3 Your Topics
-        / topics partial - show only topic title with link
+        %h3= "Your Topics (#{user.topics.count})"
+        .panel
+          .small-12.small-centered.columns
+            %h4 Recent Topics
+          .small-12#topics
+            = render partial: 'topics/user_topics', collection: @topics, as: :topic
+          .small-12.colums#topic-pagination
+            = paginate @topics, param_name: :topic, remote: true
       .medium-4.columns.panel{"data-equalizer-watch" => ""}
         %h3 Your Bookmarks
         / bookmarks partial - show only bookmark with small link to topic - same as favorites
