@@ -1,11 +1,12 @@
 class TopicsController < ApplicationController
-  
+  decorates_assigned :topic
+
   before_action :user_present?, except:[:new]
   before_action :find_topic,  except:[:index, :new, :create]
   respond_to :html, :json, except:[:index, :new, :destroy]
 
   def index
-    @topics = Topic.all
+    @topics = Topic.order(:created_at).page(params[:page]).decorate
     @topic = Topic.new
   end
 
@@ -14,7 +15,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = @user.topics.build(topic_params)
+    @topic = @user.topics.build(topic_params).decorate
     authorize @topic
     if !@topic.save
       flash.now[:error] = "Error creating Topic. #{@topic.errors.full_messages}"
@@ -39,14 +40,22 @@ class TopicsController < ApplicationController
 
   def destroy
     authorize @topic
-    if !@topic.destroy
-      flash.now[:error] = "Error deleting Topic. #{@topic.errors.full_messages}"
+    if @topic.destroy
+      controlled_redirect(@user)
     else
-      redirect_to topics_path
+      flash.now[:error] = "Error deleting Topic. #{@topic.errors.full_messages}"
     end
   end
 
   private
+
+  def controlled_redirect(user) 
+    if URI(request.referer).path == user_path(user)
+      redirect_to user_path(user)
+    else
+      redirect_to topics_path
+    end
+  end
 
   def user_present?
     if current_user
