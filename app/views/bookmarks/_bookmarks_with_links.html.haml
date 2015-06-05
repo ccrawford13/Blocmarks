@@ -3,10 +3,10 @@
     .bookmark-inner-frame.small-12.columns
       - if policy(bookmark).edit?
         .bookmark-controls
-          = link_to "", edit_bookmark_path(bookmark), id: "edit_bookmark", class: "fi-pencil", remote: true
+          = render partial: 'likes/like', locals: { favorite_bookmark: bookmark}
+          = link_to "", edit_bookmark_path(bookmark), id: "edit_bookmark", class: "fi-pencil", "data-reveal-id" => "modal#{bookmark.id}"
           = link_to "",[bookmark], id: "delete_bookmark", class: "fi-trash", method: :delete, remote: true
-      .small-7.columns
-        %h5= link_to "#{bookmark.description}", "#{bookmark.url}", target: "_blank"
-      .bookmark-controls
-        = render partial: 'likes/like', locals: { favorite_bookmark: bookmark}
-    .edit-bookmark{id: "#{bookmark.id}", style: 'display:none'}
+      .small-11.columns
+        %h5= link_to "#{bookmark.description}", "#{bookmark.url}", target: "_blank", class: 'embedly-card', "data-card-controls" => "1"
+    .reveal-modal{id: "modal#{bookmark.id}", "aria-hidden" => "true", "aria-labelledby" => "modalTitle", "data-reveal" => ""}
+      = render partial: 'bookmarks/edit', locals: { bookmark: bookmark }

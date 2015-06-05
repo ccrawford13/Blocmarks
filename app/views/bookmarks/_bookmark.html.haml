@@ -1,4 +1,4 @@
 = content_tag(:li, bookmark, class: 'ind-bookmark', id: "bookmark-#{bookmark.id}") do
   .bookmark-frame
     .bookmark-inner-frame
-      %h5= link_to "#{bookmark.description}", "#{bookmark.url}", target: "_blank"
+      %h5= link_to "#{bookmark.description}", "#{bookmark.url}", target: "_blank", class: 'embedly-card'

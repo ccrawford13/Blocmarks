@@ -1,10 +1,13 @@
 - bookmark = like.bookmark
-= div_for(bookmark, class: 'ind-favorite', id: "favorite-#{bookmark.id}") do
-  .bookmark-frame.row
-    .small-10.columns
-      %h5= link_to "#{bookmark.description}", "#{bookmark.url}", target: "_blank"
-    .bookmark-controls.small-2.columns
-      = render partial: 'likes/like', locals: { favorite_bookmark: bookmark}
-  .author.row
-    .small-12.columns
-      %small= like.author_output
+= content_tag(:li, bookmark, class: 'ind-bookmark', id: "bookmark-#{bookmark.id}") do
+  .bookmark-frame
+    .bookmark-inner-frame.small-12.columns
+      .bookmark-controls
+        = render partial: 'likes/like', locals: { favorite_bookmark: bookmark}
+        - if policy(bookmark).edit?
+          = link_to "", edit_bookmark_path(bookmark), id: "edit_bookmark", class: "fi-pencil", "data-reveal-id" => "modal#{bookmark.id}"
+          = link_to "",[bookmark], id: "delete_bookmark", class: "fi-trash", method: :delete, remote: true
+      .small-11.columns
+        %h5= link_to "#{bookmark.description}", "#{bookmark.url}", target: "_blank", class: 'embedly-card', "data-card-controls" => "1"
+    .reveal-modal{id: "modal#{bookmark.id}", "aria-hidden" => "true", "aria-labelledby" => "modalTitle", "data-reveal" => ""}
+      = render partial: 'bookmarks/edit', locals: { bookmark: bookmark }
