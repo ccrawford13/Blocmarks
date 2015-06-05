@@ -1,6 +1,10 @@
 <% if @bookmark.valid? %>
-  $('#bookmark-<%= @bookmark.id %>').html("<%= escape_javascript(render 'bookmarks/bookmarks_with_links', bookmark: @bookmark) %>");
-  $('.edit-bookmark#<%= @bookmark.id %>').slideUp( 400 );
+  <% if URI(request.referer).path == user_path(current_user) %>
+    $('#bookmark-<%= @bookmark.id %>').html("<%= escape_javascript(render @bookmark) %>");
+  <% else %>
+    $('#bookmark-<%= @bookmark.id %>').html("<%= escape_javascript(render @bookmark) %>");
+  <% end %>
+  $("#modal<%= @bookmark.id %>").foundation('reveal', 'close');
 <% else %>
   $('#bookmark-list').prepend("<div class='alert-box round alert'> <%= flash[:error] %> </div>");
 <% end %>
