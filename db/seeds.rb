@@ -22,7 +22,7 @@ admin2.save!
 
 users = User.all
 
-25.times do
+5.times do
   topic = Topic.new(
     title:         Faker::Lorem.characters(15),
     user:          users.sample
@@ -32,10 +32,14 @@ end
 
 topics = Topic.all
 
-75.times do
+urls = ['http://stackoverflow.com/', 'https://plus.google.com/u/0/', 'http://embed.ly/docs/products/cards', 'http://google.com/videos', 'http://html2haml.herokuapp.com/', 
+        'http://foundation.zurb.com/docs/', 'http://felixclack.com/', 'https://www.youtube.com/watch?v=xQJ-QGYrpRc', 'https://www.youtube.com/watch?v=bmzSy2JHmuA', 'https://www.youtube.com/watch?v=Vclo2wVDBvE',
+        'https://stocksnap.io/', 'https://www.bloc.io/' ]
+
+35.times do
   bookmark = Bookmark.new(
     description:  Faker::Lorem.characters(15),
-    url:          Faker::Internet.url,
+    url:          urls.sample,
     topic:        topics.sample,
     user:         users.sample
   )
