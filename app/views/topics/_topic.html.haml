@@ -5,4 +5,4 @@
       %small= topic.author_information
   .bookmark-container
     %ul.small-block-grid-3.medium-block-grid-4#bookmark-list
-      = render topic.bookmarks
+      = render topic.bookmarks.limit(4)

@@ -4,6 +4,6 @@
       .large-12.columns.large-centered
         = render partial: 'form', locals: { user: @user, topic: @topic }
   .row
-    .large-10.columns#topics
+    .large-12.large-centered.columns#topics
       = render @topics
       = paginate @topics

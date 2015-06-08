@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def show
     @users = UserDecorator.decorate_collection(User.all)
     @user = UserDecorator.find(params[:id])
-    @topics = @user.topics.order(:created_at).page(params[:page]).per(5).decorate
+    @topics = @user.topics.order(:created_at).page(params[:page]).per(4).decorate
     @bookmarks = @user.bookmarks.order(:created_at).page(params[:page]).per(4).decorate
     @likes = @user.likes.order(:created_at).page(params[:page]).per(4).decorate
   end

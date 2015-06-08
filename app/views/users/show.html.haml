@@ -5,14 +5,14 @@
     .row.main-content
       %h3= "Topics (#{user.topic_count})"
       .large-10.large-centered.columns#topics
-        %ul.small-block-grid-2.medium-block-grid-4#bookmark-list
+        %ul.small-block-grid-2.medium-block-grid-4#topic-list
           = render partial: 'topics/user_topics', collection: @topics, as: :topic
       .small-12.small-centered.columns#topic-pagination
         = paginate @topics, remote: true
     .row.main-content
       %h3= "Favorites (#{user.like_count})"
       .large-10.large-centered.columns#favorites
-        %ul.small-block-grid-2.medium-block-grid-4#bookmark-list
+        %ul.small-block-grid-2.medium-block-grid-4#favorite-list
           = render partial: 'bookmarks/user_liked_bookmarks', collection: @likes, as: :like
         .small-12.small-centered.columns#like-pagination
           = paginate @likes, remote: true
