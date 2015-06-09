@@ -2,9 +2,10 @@
   .large-10.columns#topic-container
     - if policy(@topic).edit?
       .delete-link
-        = link_to "", edit_topic_path(@topic), id: "edit_topic", class: "fi-pencil", remote: true
+        = link_to "", edit_topic_path(@topic), id: "edit_topic", class: "fi-pencil", "data-reveal-id" => "modal#{topic.id}"
         = link_to "", [@topic], id: "delete_topic", class: "fi-trash", method: :delete
     .topic-title
       %h3= "# #{@topic.title.titleize}"
       %small= @topic.created_at.to_time
-    .edit-form{style: 'display:none'}
+  .reveal-modal{id: "modal#{topic.id}", "aria-hidden" => "true", "aria-labelledby" => "modalTitle", "data-reveal" => ""}
+    = render partial: 'topics/edit', locals: { topic: topic }

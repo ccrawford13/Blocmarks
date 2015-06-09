@@ -2,7 +2,7 @@ class TopicDecorator < ApplicationDecorator
   delegate_all
   decorates_finders
   decorates_association :user
-  paginates_per 20
+  paginates_per 10
 
   def author_name
     [user.first_name, user.last_name].join(" ").titleize

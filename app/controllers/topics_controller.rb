@@ -49,9 +49,10 @@ class TopicsController < ApplicationController
 
   private
 
-  def controlled_redirect(user) 
+  def controlled_redirect(user)
     if URI(request.referer).path == user_path(user)
       redirect_to user_path(user)
+      flash[:notice] = "Topic successfully removed"
     else
       redirect_to topics_path
     end
@@ -64,7 +65,7 @@ class TopicsController < ApplicationController
   end
 
   def find_topic
-    @topic = Topic.find(params[:id])
+    @topic = Topic.find(params[:id]).decorate
   end
 
   def topic_params

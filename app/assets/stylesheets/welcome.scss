@@ -5,7 +5,7 @@
 
 %full-width-container {
   width: 100%;
-  height: 25rem;
+  height: 28rem;
   margin-bottom: 4%;
   overflow: scroll;
 }
@@ -19,8 +19,14 @@
 .main-header {
   @extend %full-width-image;
   @extend %full-width-container;
-  background-image: url('ocean_waves');
+  background-color: #F5F5F5;
+  // background-image: url('ocean_waves');
 
+}
+
+.container {
+  @extend .row;
+  padding: 1em;
 }
 
 .intro-text {
@@ -28,12 +34,12 @@
   margin-top: 13%;
 
   h1 {
-    color: $white;
+    color: $primary-color;
     font-size: rem-calc(65);
   }
 
   h2 {
-    color: $white;
+    color: $primary-color;
     font-size: rem-calc(40);
   }
 }
@@ -43,8 +49,14 @@
 
 }
 
-.panel {
-  height: 100%;
+.info-text {
+  @extend .panel;
+  margin: 2em 2em;
+  background-color: $secondary-color;
+
+    h5, p {
+      color: $primary-color
+    }
 }
 
 #join-blocmarks {

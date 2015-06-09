@@ -5,25 +5,34 @@
         %h1 Blocmarks
         %h2 Organized Inspiration
 .content-header#create-intro
-.row.container
+.container
   .large-12.columns
     .section-text
       %h1 Organized Links to Whatever Makes You Tick
-  .row
+    .medium-4.columns
+      %h5 Great Looking Site Previews
+      %h5= link_to "", "http://bloc.io", class: "embedly-card"
+    .medium-4.columns
+      %h5 Instant Access to Your Favorite Videos
+      %h5= link_to "", "https://www.youtube.com/watch?v=uWO8xgjyUhs", class: "embedly-card"
+    .medium-4.columns
+      %h5 Fantastic Social Media Integration
+      %h5= link_to "", "https://twitter.com/trybloc/status/605412001653755904", class: "embedly-card"
+  .container
     .large-4.columns
-      .panel
-        %h5.section-text Create & Browse Trending Topics
+      .info-text
+        %h5.section-text Create & Browse Topics
         %p View your Topics and Those Created by Members of the Blocmarks Community
     .large-4.columns
-      .panel
+      .info-text
         %h5.section-text Create Bookmarks
         %p Bookmark your Favorite Websites or Email the link to Blocmarks, and We'll Add it!
     .large-4.columns
-      .panel
+      .info-text
         %h5.section-text Like Bookmarks
         %p Bookmarks can be "Liked" and added to your profile for Easy Access
 .content-header#join-blocmarks
-.row.container
+.container
   .large-12.columns
     .section-text
       %h1 Become a Member of The Blocmarks Community

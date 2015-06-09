@@ -137,8 +137,8 @@ $jet         : #222222;
 $black       : #000000;
 
 // We use these as default colors throughout
-$primary-color: #00A1CB;
-// $secondary-color: #e7e7e7;
+$primary-color: #006666;
+$secondary-color: #E9E9E9;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
@@ -1514,11 +1514,11 @@ $pagination-link-pad: rem-calc(1 4 1);
 // Background color for the top bar
 // $topbar-bg-color: $oil;
 // $topbar-bg: $topbar-bg-color;
-$topbar-bg-color: $jet;
-$topbar-bg: $jet;
+$topbar-bg-color: $primary-color;
+$topbar-bg: $primary-color;
 
 // Height and margin
-// $topbar-height: rem-calc(45);
+$topbar-height: rem-calc(50);
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
@@ -1527,8 +1527,8 @@ $topbar-title-font-size: rem-calc(28);
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: $white;
-$topbar-link-color-hover: $primary-color;
-$topbar-link-color-active: $primary-color;
+$topbar-link-color-hover: $secondary-color;
+$topbar-link-color-active: $secondary-color;
 // $topbar-link-color-active-hover: $white;
 // $topbar-link-weight: $font-weight-normal;
 $topbar-link-font-size: rem-calc(18);
@@ -1551,7 +1551,7 @@ $topbar-dropdown-bg: $primary-color;
 $topbar-dropdown-link-color: $white;
 // $topbar-dropdown-link-color-hover: $topbar-link-color-hover;
 $topbar-dropdown-link-bg: $primary-color;
-$topbar-dropdown-link-bg-hover: $primary-color;
+$topbar-dropdown-link-bg-hover: $secondary-color;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
 $topbar-dropdown-toggle-color: $topbar-dropdown-link-color;
@@ -1563,10 +1563,10 @@ $topbar-dropdown-label-color: $primary-color;
 // $topbar-dropdown-label-font-size: rem-calc(10);
 $topbar-dropdown-label-bg: $primary-color;
 
-$topbar-dropdown-bg: $jet;
+$topbar-dropdown-bg: $primary-color;
 // $topbar-dropdown-link-color: $white;
 // $topbar-dropdown-link-color-hover: $topbar-link-color-hover;
-$topbar-dropdown-link-bg: $jet;
+$topbar-dropdown-link-bg: $primary-color;
 $topbar-dropdown-link-bg-hover: transparent;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;

@@ -1,16 +1,16 @@
 $(document).ready(function() {
   $('#like-pagination').on("click", function () {
+    $('#favorite-list').html("<%= escape_javascript(render partial: 'bookmarks/user_liked_bookmarks', collection: @likes, as: :like) %>");
     $('#like-pagination').html("<%= escape_javascript(paginate(@likes, remote: true)) %>");
-    $('#favorites').html("<%= escape_javascript(render partial: 'bookmarks/user_liked_bookmarks', collection: @likes, as: :like) %>");
   });
 
   $('#topic-pagination').on("click", function () {
+    $('#topic-list').html("<%= escape_javascript(render partial: 'topics/user_topics', collection: @topics, as: :topic) %>");
     $('#topic-pagination').html("<%= escape_javascript(paginate(@topics, remote: true)) %>");
-    $('#topics').html("<%= escape_javascript(render partial: 'topics/user_topics', collection: @topics, as: :topic) %>");
   });
 
   $('#bookmark-pagination').on("click", function () {
     $('#bookmark-pagination').html("<%= escape_javascript(paginate(@bookmarks, remote: true)) %>");
-    $('#bookmarks').html("<%= escape_javascript(render partial: 'bookmarks/user_bookmarks', collection: @bookmarks, as: :bookmark) %>");
+    $('#bookmark-list').html("<%= escape_javascript(render partial: 'bookmarks/user_bookmarks', collection: @bookmarks, as: :bookmark) %>");
   });
 });

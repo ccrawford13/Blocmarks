@@ -71,12 +71,12 @@
 // Styling for Bookmark Edit, Delete, & Favorite
 
 .bookmark-controls {
-  @extend .small-2;
+  @extend .small-1;
   @extend .columns;
+  margin-top: 1em;
   padding: 0;
 
   .fi-pencil, .fi-trash, .fi-star {
-    display: inline-block;
     color: $aluminum;
     font-size: 18px;
     padding: 0.125em;
@@ -98,5 +98,6 @@
 
 .ind-bookmark {
   text-align: center;
-  padding: 1em;
+  padding: 0;
+  height: 10rem;
 }

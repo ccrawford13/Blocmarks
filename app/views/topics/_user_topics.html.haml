@@ -1,9 +1,12 @@
-= div_for(topic, class: 'ind-topic', id: "topic-#{topic.id}") do
-  .row
-    .small-10.columns#topic-container
-      %h5= topic.linked_title_with_count
-    .small-2.columns
+= content_tag(:li, topic, class: 'ind-topic', id: "topic-#{topic.id}") do
+  .topic-container
+    .bookmark-controls
+      = link_to "", edit_topic_path(topic), id: "edit_topic", class: "fi-pencil", "data-reveal-id" => "modal#{topic.id}"
       = link_to "", [topic], id: "delete_topic", class: "fi-trash", method: :delete
-  .author.row
-    .small-12.columns
-      %small= topic.creation_date
+    .topic-link
+      %h5= topic.linked_title_with_count
+      .author-row
+        .author-details
+          %small= topic.creation_date
+    .reveal-modal{id: "modal#{topic.id}", "aria-hidden" => "true", "aria-labelledby" => "modalTitle", "data-reveal" => ""}
+      = render partial: 'topics/edit', locals: { topic: topic }

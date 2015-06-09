@@ -1,6 +1,10 @@
 <% if @topic.valid? %>
-  $('#topic-container').html("<%= escape_javascript(render 'topics/topic_with_links') %>");
-  $('.edit-form').slideUp(350);
+  <% if URI(request.referer).path == user_path(current_user) %>
+    $("#topic-<%= @topic.id %>").html("<%= escape_javascript(render partial: 'topics/user_topics' )%>");
+  <% else %>
+    $('#topic-container').html("<%= escape_javascript(render partial: 'topic_with_links') %>");
+  <% end %>
+  $("#modal<%= @topic.id %>").foundation('reveal', 'close');
 <% else %>
-  $('.topics-container').prepend("<div class='alert-box round alert'> <%= flash[:error] %> </div>");
+  $("#modal<%= @topic.id %>").prepend("<div class='alert-box round alert'> <%= flash[:error] %> </div>");
 <% end %>

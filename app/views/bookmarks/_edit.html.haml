@@ -1,6 +1,7 @@
-= form_for [topic, bookmark], remote: true do |f|
+= form_for [bookmark], remote: true do |f|
   .row
-    .large-12.columns
+    .large-12.columns.large-centered
+      %h2 Edit Bookmark
       .row.collapse
         .small-12.columns
           = f.text_field :description, id: "description", placeholder: "Awesome Search Engine", autfocus: true
@@ -8,4 +9,4 @@
           .small-10.columns
             = f.text_field :url, id: "url", placeholder: "http://www.google.com", autofocus: true
           .small-2.columns
-            %button.postfix{:type => "submit", :id => "save_bookmark"}Save
+            %button.postfix{:type => "submit", :id => "save_bookmark", "aria-label" => "close"}Save
