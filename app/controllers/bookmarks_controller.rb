@@ -27,7 +27,7 @@ class BookmarksController < ApplicationController
   end
 
   def update
-    @bookmark = Bookmark.find(params[:id])
+    @bookmark = Bookmark.find(params[:id]).decorate
     authorize @bookmark
     if !@bookmark.update_attributes(bookmark_params)
       flash.now[:error] = "Error updating Bookmark. #{@bookmark.errors.full_messages}"
@@ -50,6 +50,7 @@ class BookmarksController < ApplicationController
   def controlled_redirect(user) 
     if URI(request.referer).path == user_path(user)
       redirect_to user_path(user)
+      flash[:notice] = "Bookmark successfully removed."
     end
   end
 

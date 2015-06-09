@@ -32,6 +32,7 @@ class LikesController < ApplicationController
   def controlled_redirect(redirect_object, user) 
     if URI(request.referer).path == user_path(user)
       redirect_to user_path(user)
+      flash[:notice] = "Favorite successfully removed."
     else
       redirect_to redirect_object
     end
