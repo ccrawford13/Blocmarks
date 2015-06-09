@@ -1,8 +1,9 @@
-= form_for [ topic ], remote: true do |f|
+= form_for topic, remote: true do |f|
   .row
-    .large-7.columns
+    .large-12.columns.large-centered
+      %h2 Edit Topic
       .row.collapse
         .small-10.columns
           = f.text_field :title, id: "title", placeholder: "New Topic"
         .small-2.columns
-          %button.postfix{type: "submit", id: "save_changes"} Save
+          %button.postfix{type: "submit", id: "save_changes", "aria-label" => "close"} Save

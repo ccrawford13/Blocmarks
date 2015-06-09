@@ -1,6 +1,6 @@
 <% if @bookmark.valid? %>
   <% if URI(request.referer).path == user_path(current_user) %>
-    $('#bookmark-<%= @bookmark.id %>').html("<%= escape_javascript(render @bookmark) %>");
+    $('#bookmark-<%= @bookmark.id %>').html("<%= escape_javascript(render partial: 'bookmarks/user_bookmarks', locals: { bookmark: @bookmark}) %>");
   <% else %>
     $('#bookmark-<%= @bookmark.id %>').html("<%= escape_javascript(render @bookmark) %>");
   <% end %>
