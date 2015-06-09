@@ -6,7 +6,7 @@
         = render partial: 'likes/like', locals: { favorite_bookmark: bookmark}
         - if policy(bookmark).edit?
           = link_to "", edit_bookmark_path(bookmark), id: "edit_bookmark", class: "fi-pencil", "data-reveal-id" => "modal#{bookmark.id}"
-          = link_to "",[bookmark], id: "delete_bookmark", class: "fi-trash", method: :delete, remote: true
+          = link_to "",[bookmark], id: "delete_bookmark", class: "fi-trash", method: :delete
       .small-11.columns
         %h5= link_to "#{bookmark.description}", "#{bookmark.url}", target: "_blank", class: 'embedly-card', "data-card-controls" => "1"
     .author-row
